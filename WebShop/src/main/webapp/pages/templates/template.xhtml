@@ -1,0 +1,26 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core">
+
+<!-- Created by Tom Hanssens 2012 -->
+
+	<h:head>
+		<link rel="stylesheet" type="text/css" href="../../layout/layout.css"/>
+		<h1>WebShop</h1>
+		<title>
+			<ui:insert name="title">
+				Template
+			</ui:insert>
+		</title>
+	</h:head>
+
+	<h:body>
+		<ui:include src="header.xhtml"/>
+		<h:messages id="messages"/>
+		<ui:insert name="body"/>
+		<ui:include src="footer.xhtml"/>
+	</h:body>
+
+</html>
