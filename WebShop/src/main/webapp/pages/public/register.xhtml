@@ -1,0 +1,72 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core">
+
+	<ui:composition template="../templates/template.xhtml">
+		<ui:define name="title">
+			Register Page
+		</ui:define>
+		<ui:define name="body">
+			<h2>Register Page</h2>
+			<h:form>
+				<p>
+					<u>Personal Data</u>
+				</p>
+				<table>
+					<tr>
+						<td><h:outputLabel value="First Name:"/></td>
+						<td><h:inputText value="#{registerBackingAction.firstname}"/></td>
+					</tr>
+					<tr>
+						<td><h:outputLabel value="Last Name:"/></td>
+						<td><h:inputText value="#{registerBackingAction.lastname}"/></td>
+					</tr>
+					<tr>
+						<td><h:outputLabel value="Date of Birth:"/></td>
+						<td><h:inputText value="#{registerBackingAction.birthdate}"/></td>
+					</tr>
+				</table>
+				<p>
+					<u>Contact Data</u>
+				</p>
+				<table>
+					<tr>
+						<td><h:outputLabel value="Phone:"/></td>
+						<td><h:inputText value="#{registerBackingAction.phone}"/></td>
+					</tr>
+					<tr>
+						<td><h:outputLabel value="Email:"/></td>
+						<td><h:inputText value="#{registerBackingAction.email}"/></td>
+					</tr>
+				</table>
+				<p>
+					<u>Login Data</u>
+				</p>
+				<table>
+					<tr>
+						<td><h:outputLabel value="User Name:"/></td>
+						<td><h:inputText value="#{registerBackingAction.username}"/></td>
+					</tr>
+					<tr>
+						<td><h:outputLabel value="Password:"/></td>
+						<td><h:inputText value="#{registerBackingAction.password}"/></td>
+					</tr>
+					<tr>
+						<td><h:outputLabel value="Role:"/></td>
+						<td>
+							<h:selectOneRadio value="#{registerBackingAction.userrole}">
+								<f:selectItem itemLabel="Registered" itemValue="registered"/>
+								<f:selectItem itemLabel="Super" itemValue="super"/>
+							</h:selectOneRadio>
+						</td>
+					</tr>
+				</table>
+				<h:commandButton actionListener="#{registerBackingAction.Clear}" value="Clear"/>
+				<h:commandButton actionListener="#{registerBackingAction.Register}" value="Register"/>
+			</h:form>
+		</ui:define>
+	</ui:composition>
+
+</html>
