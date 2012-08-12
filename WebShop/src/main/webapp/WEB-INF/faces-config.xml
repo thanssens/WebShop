@@ -5,9 +5,11 @@
     xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-facesconfig_2_0.xsd"
     version="2.0">
 	<application>
-		<locale-config>
-			<default-locale>nl_BE</default-locale>
-		</locale-config>
+		
+
+		<message-bundle>
+			be.groept.bundle.message.properties
+		</message-bundle>
 
 		<el-resolver>org.springframework.web.jsf.el.SpringBeanFacesELResolver</el-resolver>
 	</application>
