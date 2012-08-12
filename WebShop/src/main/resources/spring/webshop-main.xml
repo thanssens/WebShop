@@ -23,5 +23,13 @@
 	<bean id="myFacade" class="be.groept.facade.impl.MyFacadeImpl">
 		<constructor-arg ref="myRepository"/>
 	</bean>
-			
+
+	<bean id="userRepository" class="be.groept.repositories.impl.UserRepositoryImpl">
+		<constructor-arg ref="sessionFactory"/>
+	</bean>
+
+	<bean id="userFacade" class="be.groept.facade.impl.UserFacadeImpl">
+		<constructor-arg ref="userRepository"/>
+	</bean>
+
 </beans>

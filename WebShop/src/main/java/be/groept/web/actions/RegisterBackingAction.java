@@ -3,9 +3,10 @@ package be.groept.web.actions;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 
-import be.groept.repositories.entities.UserEntity;
+import be.groept.facade.UserFacade;
 
 /**
  * 
@@ -16,6 +17,9 @@ import be.groept.repositories.entities.UserEntity;
 @SessionScoped
 @Controller
 public class RegisterBackingAction {
+
+	@Autowired
+	private UserFacade userFacade;
 
 	private String firstname;
 	private String lastname;
@@ -33,9 +37,7 @@ public class RegisterBackingAction {
 	}
 
 	public void Register() {
-		UserEntity userEntity = new UserEntity();
-		
-		//Validate and register new user
+		userFacade.registerUser(firstname, lastname, birthdate, phone, email, username, password, userrole);
 	}
 
 	public String getFirstname() {
