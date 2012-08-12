@@ -15,4 +15,10 @@
 
 		<el-resolver>org.springframework.web.jsf.el.SpringBeanFacesELResolver</el-resolver>
 	</application>
+
+	<validator>
+		<validator-id>emailValidator</validator-id>
+		<validator-class>be.groept.web.validators.EmailValidator</validator-class>
+	</validator>
+
 </faces-config>

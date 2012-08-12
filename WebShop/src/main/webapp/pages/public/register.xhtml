@@ -40,7 +40,11 @@
 					</tr>
 					<tr>
 						<td><h:outputLabel value="Email:"/></td>
-						<td><h:inputText label="Email" value="#{registerBackingAction.email}" required="true"/></td>
+						<td>
+							<h:inputText label="Email" value="#{registerBackingAction.email}" required="true">
+								<f:validator validatorId="emailValidator"/>
+							</h:inputText>
+						</td>
 					</tr>
 				</table>
 				<p>
