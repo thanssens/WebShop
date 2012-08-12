@@ -18,16 +18,16 @@
 					<tr>
 						<td><h:outputLabel value="First Name:"/></td>
 						<td>
-							<h:inputText value="#{registerBackingAction.firstname}" required="true" validatorMessage="Field 'First Name' is mandatory"/>
+							<h:inputText label="First Name" value="#{registerBackingAction.firstname}" required="true"/>
 						</td>
 					</tr>
 					<tr>
 						<td><h:outputLabel value="Last Name:"/></td>
-						<td><h:inputText value="#{registerBackingAction.lastname}"/></td>
+						<td><h:inputText label="Last Name" value="#{registerBackingAction.lastname}" required="true"/></td>
 					</tr>
 					<tr>
 						<td><h:outputLabel value="Date of Birth:"/></td>
-						<td><h:inputText value="#{registerBackingAction.birthdate}"/></td>
+						<td><h:inputText label="Date of Birth" value="#{registerBackingAction.birthdate}" required="true"/></td>
 					</tr>
 				</table>
 				<p>
@@ -36,11 +36,11 @@
 				<table>
 					<tr>
 						<td><h:outputLabel value="Phone:"/></td>
-						<td><h:inputText value="#{registerBackingAction.phone}"/></td>
+						<td><h:inputText label="Phone" value="#{registerBackingAction.phone}" required="true"/></td>
 					</tr>
 					<tr>
 						<td><h:outputLabel value="Email:"/></td>
-						<td><h:inputText value="#{registerBackingAction.email}"/></td>
+						<td><h:inputText label="Email" value="#{registerBackingAction.email}" required="true"/></td>
 					</tr>
 				</table>
 				<p>
@@ -49,16 +49,16 @@
 				<table>
 					<tr>
 						<td><h:outputLabel value="User Name:"/></td>
-						<td><h:inputText value="#{registerBackingAction.username}"/></td>
+						<td><h:inputText label="User Name" value="#{registerBackingAction.username}" required="true"/></td>
 					</tr>
 					<tr>
 						<td><h:outputLabel value="Password:"/></td>
-						<td><h:inputText value="#{registerBackingAction.password}"/></td>
+						<td><h:inputText label="Password" value="#{registerBackingAction.password}" required="true"/></td>
 					</tr>
 					<tr>
 						<td><h:outputLabel value="Role:"/></td>
 						<td>
-							<h:selectOneRadio value="#{registerBackingAction.userrole}">
+							<h:selectOneRadio label="Role" value="#{registerBackingAction.userrole}" required="true">
 								<f:selectItem itemLabel="Registered" itemValue="registered"/>
 								<f:selectItem itemLabel="Super" itemValue="super"/>
 							</h:selectOneRadio>
