@@ -10,6 +10,7 @@ import org.springframework.transaction.support.DefaultTransactionDefinition;
 
 import be.groept.repositories.entities.SomeEntity;
 import be.groept.repositories.entities.UserEntity;
+import be.groept.repositories.entities.UserInfoEntity;
 import be.groept.repositories.entities.UserRoleEntity.Role;
 
 /**
@@ -42,8 +43,14 @@ public class TestDataSetup {
 		userEntity.setPassword("pass");
 		userEntity.addUserRole(Role.Super);
 
+		UserInfoEntity userInfoEntity = new UserInfoEntity();
+		userInfoEntity.setUser(userEntity);
+		userInfoEntity.setFirstname("firstname");
+		userInfoEntity.setLastname("lastname");
+
 		session.save(someEntity);
 		session.save(userEntity);
+		session.save(userInfoEntity);
 		platformTransactionManager.commit(transactionStatus);
 	}
 

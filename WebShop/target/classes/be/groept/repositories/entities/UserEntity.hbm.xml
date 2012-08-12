@@ -1,0 +1,26 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd" >
+
+<hibernate-mapping default-access="field">
+
+	<class name="be.groept.repositories.entities.UserEntity" table="users">
+
+		<id name="id" type="long" column="id" access="property">
+	        <generator class="native"/>
+		</id>
+
+		<property name="username" type="string">
+			<column name="user_name"/>
+		</property>
+		<property name="password" type="string">
+			<column name="user_pass"/>
+		</property>
+		<bag name="userRoles" table="user_roles" cascade="all">
+			<key column="username"/>
+			<one-to-many class="be.groept.repositories.entities.UserRoleEntity"/>
+		</bag>
+
+	</class>
+</hibernate-mapping>
