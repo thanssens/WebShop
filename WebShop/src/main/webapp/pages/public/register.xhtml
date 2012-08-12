@@ -17,7 +17,9 @@
 				<table>
 					<tr>
 						<td><h:outputLabel value="First Name:"/></td>
-						<td><h:inputText value="#{registerBackingAction.firstname}"/></td>
+						<td>
+							<h:inputText value="#{registerBackingAction.firstname}" required="true" validatorMessage="Field 'First Name' is mandatory"/>
+						</td>
 					</tr>
 					<tr>
 						<td><h:outputLabel value="Last Name:"/></td>
