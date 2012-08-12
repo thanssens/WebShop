@@ -9,7 +9,14 @@ import org.springframework.transaction.TransactionStatus;
 import org.springframework.transaction.support.DefaultTransactionDefinition;
 
 import be.groept.repositories.entities.SomeEntity;
+import be.groept.repositories.entities.UserEntity;
+import be.groept.repositories.entities.UserRoleEntity.Role;
 
+/**
+ * 
+ * @author Tom Hanssens
+ *
+ */
 public class TestDataSetup {
 
 	private SessionFactory sessionFactory;
@@ -21,8 +28,7 @@ public class TestDataSetup {
 	}
 
 	public void setup() {
-		TransactionStatus transactionStatus = platformTransactionManager
-				.getTransaction(new DefaultTransactionDefinition());
+		TransactionStatus transactionStatus = platformTransactionManager.getTransaction(new DefaultTransactionDefinition());
 
 		Session session = sessionFactory.getCurrentSession();
 
@@ -31,7 +37,13 @@ public class TestDataSetup {
 		someEntity.setLastName("Doe");
 		someEntity.setBirthDate(new GregorianCalendar(2000, 1, 1).getTime());
 
+		UserEntity userEntity = new UserEntity();
+		userEntity.setUsername("user");
+		userEntity.setPassword("pass");
+		userEntity.addUserRole(Role.Super);
+
 		session.save(someEntity);
+		session.save(userEntity);
 		platformTransactionManager.commit(transactionStatus);
 	}
 

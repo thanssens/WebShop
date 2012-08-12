@@ -25,11 +25,11 @@
 		<property name="username" value="sa" />
 		<property name="password" value="" />
 	</bean>
-	
+
 	<bean id="transactionManager" class="org.springframework.orm.hibernate3.HibernateTransactionManager">
 		<property name="sessionFactory" ref="sessionFactory" />
 	</bean>
-	
+
 	<bean id="sessionFactory" class="org.springframework.orm.hibernate3.LocalSessionFactoryBean">
 		<property name="dataSource" ref="dataSource" />
 		<property name="hibernateProperties">
@@ -48,7 +48,10 @@
 		<property name="mappingLocations">
 			<list>
 				<value>classpath:be/groept/repositories/entities/SomeEntity.hbm.xml</value>
+				<value>classpath:be/groept/repositories/entities/UserRoleEntity.hbm.xml</value>
+				<value>classpath:be/groept/repositories/entities/UserEntity.hbm.xml</value>
 			</list>	
 		</property>			
 	</bean>
+
 </beans>

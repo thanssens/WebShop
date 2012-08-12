@@ -6,13 +6,18 @@
 
 <!-- Created by Tom Hanssens 2012 -->
 
-	<h:form id="header">
+	<h:form id="login">
+		<h:outputText value="You are NOT logged in."/>
+		<h:commandButton value="Login"/>
+	</h:form>
+
+	<h:form id="menu">
 		<ul>
 			<li><h:commandButton value="Products"/></li>
 			<li><h:commandButton value="Register"/></li>
-			<li><h:commandButton value="My Orders"/></li>
-			<li><h:commandButton value="My Basket"/></li>
-			<li><h:commandButton value="Statistics"/></li>
+			<li><h:commandButton value="My Orders" rendered="#{request.isUserInRole('registered')}"/></li>
+			<li><h:commandButton value="My Basket" rendered="#{request.isUserInRole('registered')}"/></li>
+			<li><h:commandButton value="Statistics" rendered="#{request.isUserInRole('super')}"/></li>
 		</ul>
 	</h:form>
 

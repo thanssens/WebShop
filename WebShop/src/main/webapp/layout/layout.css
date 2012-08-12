@@ -1,4 +1,4 @@
-#header {
+#menu {
 	width: 100%;
 	padding-top: 1em;
 	padding-bottom: 0.5em;
@@ -7,11 +7,11 @@
 	background-color: #CCFFFF;
 }
 
-#header ul {
+#menu ul {
 	margin: auto;
 }
 
-#header ul li {
+#menu ul li {
 	display: inline;
 }
 

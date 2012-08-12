@@ -154,4 +154,5 @@ public class HsqldbServerBean implements InitializingBean, DisposableBean {
 		}
 		server = null;
 	}
+
 }
