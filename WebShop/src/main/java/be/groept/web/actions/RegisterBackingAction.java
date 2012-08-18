@@ -1,12 +1,16 @@
 package be.groept.web.actions;
 
+import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
+import javax.faces.context.FacesContext;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 
 import be.groept.facade.UserFacade;
+import be.groept.repositories.entities.UserEntity;
+import be.groept.repositories.entities.UserInfoEntity;
 
 /**
  * 
@@ -21,79 +25,43 @@ public class RegisterBackingAction {
 	@Autowired
 	private UserFacade userFacade;
 
-	private String firstname;
-	private String lastname;
-	private String birthdate;
+	private UserEntity userEntity = new UserEntity();
+	private UserInfoEntity userInfoEntity = new UserInfoEntity();
 
-	private String phone;
-	private String email;
-
-	private String username;
-	private String password;
 	private String userrole;
 
-	public void Clear() {
-		//Clear the fields
+	public String clear() {
+		userEntity = new UserEntity();
+		userInfoEntity = new UserInfoEntity();
+		userrole = null;
+
+		return "clear";
 	}
 
-	public void Register() {
-		userFacade.registerUser(firstname, lastname, birthdate, phone, email, username, password, userrole);
+	public void register() {
+		if ((userFacade.registerUser(userInfoEntity, userEntity, userrole))) {
+			clear();
+		} else {
+			FacesMessage message = new FacesMessage("The username '" + userEntity.getUsername() + "' already exists.");
+			message.setSeverity(FacesMessage.SEVERITY_ERROR);
+			FacesContext.getCurrentInstance().addMessage(null, message);
+		}
 	}
 
-	public String getFirstname() {
-		return firstname;
+	public UserEntity getUserEntity() {
+		return userEntity;
 	}
 
-	public void setFirstname(String firstname) {
-		this.firstname = firstname;
+	public void setUserEntity(UserEntity userEntity) {
+		this.userEntity = userEntity;
 	}
 
-	public String getLastname() {
-		return lastname;
+	public UserInfoEntity getUserInfoEntity() {
+		return userInfoEntity;
 	}
 
-	public void setLastname(String lastname) {
-		this.lastname = lastname;
-	}
-
-	public String getBirthdate() {
-		return birthdate;
-	}
-
-	public void setBirthdate(String birthdate) {
-		this.birthdate = birthdate;
-	}
-
-	public String getPhone() {
-		return phone;
-	}
-
-	public void setPhone(String phone) {
-		this.phone = phone;
-	}
-
-	public String getEmail() {
-		return email;
-	}
-
-	public void setEmail(String email) {
-		this.email = email;
-	}
-
-	public String getUsername() {
-		return username;
-	}
-
-	public void setUsername(String username) {
-		this.username = username;
-	}
-
-	public String getPassword() {
-		return password;
-	}
-
-	public void setPassword(String password) {
-		this.password = password;
+	public void setUserInfoEntity(UserInfoEntity userInfoEntity) {
+		this.userInfoEntity = userInfoEntity;
 	}
 
 	public String getUserrole() {

@@ -49,8 +49,8 @@
 			<list>
 				<value>classpath:be/groept/repositories/entities/SomeEntity.hbm.xml</value>
 				<value>classpath:be/groept/repositories/entities/UserEntity.hbm.xml</value>
-				<value>classpath:be/groept/repositories/entities/UserRoleEntity.hbm.xml</value>
 				<value>classpath:be/groept/repositories/entities/UserInfoEntity.hbm.xml</value>
+				<value>classpath:be/groept/repositories/entities/UserRoleEntity.hbm.xml</value>
 			</list>	
 		</property>			
 	</bean>

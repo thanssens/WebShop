@@ -13,11 +13,21 @@
 
 	<h:form id="menu">
 		<ul>
-			<li><h:commandButton value="Products"/></li>
-			<li><h:commandButton value="Register"/></li>
-			<li><h:commandButton value="My Orders" rendered="#{request.isUserInRole('registered')}"/></li>
-			<li><h:commandButton value="My Basket" rendered="#{request.isUserInRole('registered')}"/></li>
-			<li><h:commandButton value="Statistics" rendered="#{request.isUserInRole('super')}"/></li>
+			<li>
+				<h:commandButton value="Products"/>
+			</li>
+			<li>
+				<h:commandButton value="Register"/>
+			</li>
+			<li>
+				<h:commandButton value="My Orders" rendered="#{request.isUserInRole('registered')}"/>
+			</li>
+			<li>
+				<h:commandButton value="My Basket" rendered="#{request.isUserInRole('registered')}"/>
+			</li>
+			<li>
+				<h:commandButton value="Statistics" rendered="#{request.isUserInRole('super')}"/>
+			</li>
 		</ul>
 	</h:form>
 
