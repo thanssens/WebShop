@@ -2,6 +2,10 @@
 <web-app xmlns="http://java.sun.com/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
       xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd" version="3.0"> 
 
+	<welcome-file-list>
+		<welcome-file>/pages/public/landing.xhtml</welcome-file>
+	</welcome-file-list>
+
 	<context-param>
 		<param-name>javax.faces.DEFAULT_SUFFIX</param-name>
 		<param-value>.xhtml</param-value>
@@ -42,10 +46,10 @@
 
  <login-config>
   	<auth-method>FORM</auth-method>
-  	<realm-name>WebappJsf</realm-name>
+  	<realm-name>webapp</realm-name>
   	<form-login-config>
-  		<form-login-page>/login.faces</form-login-page>
-  		<form-error-page>/login.faces</form-error-page>
+  		<form-login-page>/pages/public/login.faces</form-login-page>
+  		<form-error-page>/pages/public/login.faces</form-error-page>
   	</form-login-config>
   </login-config>
 
@@ -56,7 +60,7 @@
 <security-constraint>
   	<web-resource-collection> 
   		<web-resource-name>Secured zone</web-resource-name>
-  		<url-pattern>/secured/*</url-pattern>
+  		<url-pattern>/pages/secured/*</url-pattern>
   		<http-method>GET</http-method>
   		<http-method>POST</http-method>
   		<http-method>HEAD</http-method>
@@ -67,8 +71,8 @@
   	</web-resource-collection>
 
   	<auth-constraint>
-  		<role-name>admin</role-name>
-  		<role-name>admin</role-name>
+  		<role-name>Registered</role-name>
+  		<role-name>Super</role-name>
   	</auth-constraint>
 
   </security-constraint>

@@ -8,7 +8,7 @@
 
 	<h:form id="login">
 		<h:outputText value="You are NOT logged in."/>
-		<h:commandButton value="Login"/>
+		<h:commandButton value="Login" action="../public/login.xhtml"/>
 	</h:form>
 
 	<h:form id="menu">
@@ -17,16 +17,16 @@
 				<h:commandButton value="Products"/>
 			</li>
 			<li>
-				<h:commandButton value="Register"/>
+				<h:commandButton value="Register" action="../public/register.xhtml"/>
 			</li>
 			<li>
-				<h:commandButton value="My Orders" rendered="#{request.isUserInRole('registered')}"/>
+				<h:commandButton value="My Orders" rendered="#{request.isUserInRole('Registered')}"/>
 			</li>
 			<li>
-				<h:commandButton value="My Basket" rendered="#{request.isUserInRole('registered')}"/>
+				<h:commandButton value="My Basket" rendered="#{request.isUserInRole('Registered')}"/>
 			</li>
 			<li>
-				<h:commandButton value="Statistics" rendered="#{request.isUserInRole('super')}"/>
+				<h:commandButton value="Statistics" rendered="#{request.isUserInRole('Super')}"/>
 			</li>
 		</ul>
 	</h:form>

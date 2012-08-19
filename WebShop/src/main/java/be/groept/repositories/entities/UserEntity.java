@@ -21,7 +21,7 @@ public class UserEntity {
 	private Collection<UserRoleEntity> userRoles = new LinkedList<UserRoleEntity>();
 
 	//Iterable cannot be changed
-	public Iterable<Role> getUserRoles(){
+	public Iterable<Role> getUserRoles() {
 		Collection<Role> roles = new LinkedList<Role>();
 		for (UserRoleEntity userRoleEntity : getRoles()) {
 			roles.add(userRoleEntity.getRole());
@@ -29,7 +29,7 @@ public class UserEntity {
 		return roles;
 	}
 
-	public void addUserRole(Role role){
+	public void addUserRole(Role role) {
 		if (role.equals(Role.Super)) {
 			addUserRole(Role.Registered);
 		}

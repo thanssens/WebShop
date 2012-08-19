@@ -10,6 +10,28 @@
 		</ui:define>
 		<ui:define name="body">
 			<h2>Login Page</h2>
+			<h:form>
+				<h:messages/>
+				<table>
+					<tr>
+						<td>
+							<h:outputLabel value="Username:"/>
+						</td>
+						<td>
+							<h:inputText value="#{loginBackingAction.userEntity.username}"/>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<h:outputLabel value="Password:"/>
+						</td>
+						<td>
+							<h:inputSecret value="#{loginBackingAction.userEntity.password}"/>
+						</td>
+					</tr>
+				</table>
+				<h:commandButton action="#{loginBackingAction.logon}" value="Logon"/>
+			</h:form>
 		</ui:define>
 	</ui:composition>
 

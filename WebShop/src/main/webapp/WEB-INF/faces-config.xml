@@ -20,16 +20,19 @@
 		<validator-id>emailValidator</validator-id>
 		<validator-class>be.groept.web.validators.EmailValidator</validator-class>
 	</validator>
-	<validator>
-		<validator-id>userValidator</validator-id>
-		<validator-class>be.groept.web.validators.UserValidator</validator-class>
-	</validator>
 
 	<navigation-rule>
 		<navigation-case>
 			<from-action>#{registerBackingAction.clear}</from-action>
 			<from-outcome>clear</from-outcome>
 			<to-view-id>/pages/public/register.xhtml</to-view-id>
+		</navigation-case>
+
+		<navigation-case>
+			<from-action>#{loginBackingAction.logon}</from-action>
+			<from-outcome>success</from-outcome>
+			<to-view-id>/pages/public/landing.xhtml</to-view-id>
+			<redirect/>
 		</navigation-case>
 	</navigation-rule>
 

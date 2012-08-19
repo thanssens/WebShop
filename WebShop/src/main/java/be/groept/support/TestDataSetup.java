@@ -38,19 +38,37 @@ public class TestDataSetup {
 		someEntity.setLastName("Doe");
 		someEntity.setBirthDate(new GregorianCalendar(2000, 1, 1).getTime());
 
-		UserEntity userEntity = new UserEntity();
-		userEntity.setUsername("user");
-		userEntity.setPassword("pass");
-		userEntity.addUserRole(Role.Super);
+		UserEntity userEntity1 = new UserEntity();
+		userEntity1.setUsername("regged");
+		userEntity1.setPassword("regged");
+		userEntity1.addUserRole(Role.Registered);
 
-		UserInfoEntity userInfoEntity = new UserInfoEntity();
-		userInfoEntity.setUser(userEntity);
-		userInfoEntity.setFirstname("firstname");
-		userInfoEntity.setLastname("lastname");
+		UserInfoEntity userInfoEntity1 = new UserInfoEntity();
+		userInfoEntity1.setUser(userEntity1);
+		userInfoEntity1.setFirstname("firstname");
+		userInfoEntity1.setLastname("lastname");
+		userInfoEntity1.setBirthdate("08-08-1988");
+		userInfoEntity1.setPhone("0488224466");
+		userInfoEntity1.setEmail("user1@example.com");
+
+		UserEntity userEntity2 = new UserEntity();
+		userEntity2.setUsername("super");
+		userEntity2.setPassword("super");
+		userEntity2.addUserRole(Role.Super);
+
+		UserInfoEntity userInfoEntity2 = new UserInfoEntity();
+		userInfoEntity2.setUser(userEntity2);
+		userInfoEntity2.setFirstname("firstname");
+		userInfoEntity2.setLastname("lastname");
+		userInfoEntity2.setBirthdate("08-08-1988");
+		userInfoEntity2.setPhone("0488224466");
+		userInfoEntity2.setEmail("user1@example.com");
 
 		session.save(someEntity);
-		session.save(userEntity);
-		session.save(userInfoEntity);
+		session.save(userEntity1);
+		session.save(userEntity2);
+		session.save(userInfoEntity1);
+		session.save(userInfoEntity2);
 		platformTransactionManager.commit(transactionStatus);
 	}
 

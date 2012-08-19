@@ -1,3 +1,7 @@
+h1, h2 {
+	display: none;
+}
+
 #menu {
 	width: 100%;
 	padding-top: 1em;

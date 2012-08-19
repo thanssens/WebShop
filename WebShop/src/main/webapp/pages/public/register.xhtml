@@ -6,10 +6,10 @@
 
 	<ui:composition template="../templates/template.xhtml">
 		<ui:define name="title">
-			Register Page
+			User Registration
 		</ui:define>
 		<ui:define name="body">
-			<h2>Register Page</h2>
+			<h2>User Registration</h2>
 			<h:form>
 				<p>
 					<u>Personal Data</u>
@@ -80,7 +80,7 @@
 							<h:outputLabel value="Password:"/>
 						</td>
 						<td>
-							<h:inputText label="Password" value="#{registerBackingAction.userEntity.password}" required="true"/>
+							<h:inputSecret label="Password" value="#{registerBackingAction.userEntity.password}" required="true"/>
 						</td>
 					</tr>
 					<tr>
