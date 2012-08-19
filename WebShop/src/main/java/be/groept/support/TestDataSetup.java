@@ -8,6 +8,7 @@ import org.springframework.transaction.PlatformTransactionManager;
 import org.springframework.transaction.TransactionStatus;
 import org.springframework.transaction.support.DefaultTransactionDefinition;
 
+import be.groept.repositories.entities.ProductEntity;
 import be.groept.repositories.entities.SomeEntity;
 import be.groept.repositories.entities.UserEntity;
 import be.groept.repositories.entities.UserInfoEntity;
@@ -64,11 +65,32 @@ public class TestDataSetup {
 		userInfoEntity2.setPhone("0488224466");
 		userInfoEntity2.setEmail("user1@example.com");
 
+		ProductEntity productEntity1 = new ProductEntity();
+		productEntity1.setName("Product1");
+		productEntity1.setCategory("Household");
+		productEntity1.setPrice(1000);
+		productEntity1.setStock(50);
+
+		ProductEntity productEntity2 = new ProductEntity();
+		productEntity2.setName("Product2");
+		productEntity2.setCategory("Electronics");
+		productEntity2.setPrice(100);
+		productEntity2.setStock(100);
+
+		ProductEntity productEntity3 = new ProductEntity();
+		productEntity3.setName("Product3");
+		productEntity3.setCategory("Hifi");
+		productEntity3.setPrice(200);
+		productEntity3.setStock(1000);
+
 		session.save(someEntity);
 		session.save(userEntity1);
 		session.save(userEntity2);
 		session.save(userInfoEntity1);
 		session.save(userInfoEntity2);
+		session.save(productEntity1);
+		session.save(productEntity2);
+		session.save(productEntity3);
 		platformTransactionManager.commit(transactionStatus);
 	}
 
