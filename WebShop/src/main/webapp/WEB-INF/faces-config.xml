@@ -32,7 +32,6 @@
 			<from-action>#{loginBackingAction.logon}</from-action>
 			<from-outcome>success</from-outcome>
 			<to-view-id>/pages/public/landing.xhtml</to-view-id>
-			<redirect/>
 		</navigation-case>
 	</navigation-rule>
 

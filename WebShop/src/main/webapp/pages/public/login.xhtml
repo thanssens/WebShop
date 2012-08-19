@@ -11,14 +11,13 @@
 		<ui:define name="body">
 			<h2>Login Page</h2>
 			<h:form>
-				<h:messages/>
 				<table>
 					<tr>
 						<td>
 							<h:outputLabel value="Username:"/>
 						</td>
 						<td>
-							<h:inputText value="#{loginBackingAction.userEntity.username}"/>
+							<h:inputText label="Username:" value="#{loginBackingAction.userEntity.username}" required="true"/>
 						</td>
 					</tr>
 					<tr>
@@ -26,11 +25,16 @@
 							<h:outputLabel value="Password:"/>
 						</td>
 						<td>
-							<h:inputSecret value="#{loginBackingAction.userEntity.password}"/>
+							<h:inputSecret label="Password:" value="#{loginBackingAction.userEntity.password}" required="true"/>
+						</td>
+					</tr>
+					<tr>
+						<td></td>
+						<td>
+							<h:commandButton action="#{loginBackingAction.logon}" value="Logon"/>
 						</td>
 					</tr>
 				</table>
-				<h:commandButton action="#{loginBackingAction.logon}" value="Logon"/>
 			</h:form>
 		</ui:define>
 	</ui:composition>
