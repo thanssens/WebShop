@@ -14,10 +14,10 @@
 	<h:form id="menu">
 		<ul>
 			<li>
-				<h:commandButton value="Products"/>
+				<h:commandButton value="Products" action="../public/products.xhtml?faces-redirect=true"/>
 			</li>
 			<li>
-				<h:commandButton value="Register" action="../public/register.xhtml"/>
+				<h:commandButton value="Register" action="../public/register.xhtml?faces-redirect=true"/>
 			</li>
 			<li>
 				<h:commandButton value="My Orders" rendered="#{request.isUserInRole('Registered')}"/>

@@ -32,4 +32,8 @@
 		<constructor-arg ref="userRepository"/>
 	</bean>
 
+	<bean id="productRepository" class="be.groept.repositories.impl.ProductRepositoryImpl">
+		<constructor-arg ref="sessionFactory"/>
+	</bean>
+
 </beans>
