@@ -8,6 +8,7 @@ import org.springframework.transaction.PlatformTransactionManager;
 import org.springframework.transaction.TransactionStatus;
 import org.springframework.transaction.support.DefaultTransactionDefinition;
 
+import be.groept.repositories.entities.ProductCategoryEntity;
 import be.groept.repositories.entities.ProductEntity;
 import be.groept.repositories.entities.SomeEntity;
 import be.groept.repositories.entities.UserEntity;
@@ -38,6 +39,15 @@ public class TestDataSetup {
 		someEntity.setFirstName("John");
 		someEntity.setLastName("Doe");
 		someEntity.setBirthDate(new GregorianCalendar(2000, 1, 1).getTime());
+
+		ProductCategoryEntity productCategoryEntity1 = new ProductCategoryEntity();
+		productCategoryEntity1.setName("Household");
+		ProductCategoryEntity productCategoryEntity2 = new ProductCategoryEntity();
+		productCategoryEntity2.setName("Electronics");
+		ProductCategoryEntity productCategoryEntity3 = new ProductCategoryEntity();
+		productCategoryEntity3.setName("Hifi");
+
+
 
 		UserEntity userEntity1 = new UserEntity();
 		userEntity1.setUsername("regged");

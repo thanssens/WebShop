@@ -1,9 +1,14 @@
-#messages {
-	color: red;
-}
-
 h1, h2 {
 	display: none;
+}
+
+#body {
+	width: 100%;
+	align: center;
+}
+
+#logon {
+	border: 1px solid black;
 }
 
 #menu {
@@ -26,4 +31,8 @@ h1, h2 {
 #footer {
 	font-size: small;
 	margin-top: 20px;
+}
+
+#messages {
+	color: red;
 }

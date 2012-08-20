@@ -33,6 +33,12 @@
 			<from-outcome>success</from-outcome>
 			<to-view-id>/pages/public/landing.xhtml</to-view-id>
 		</navigation-case>
+
+		<navigation-case>
+			<from-action>#{productsBackingAction.clear}</from-action>
+			<from-outcome>clear</from-outcome>
+			<to-view-id>/pages/public/products.xhtml</to-view-id>
+		</navigation-case>
 	</navigation-rule>
 
 </faces-config>

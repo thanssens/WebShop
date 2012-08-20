@@ -10,6 +10,42 @@
 		</ui:define>
 		<ui:define name="body">
 			<h2>My Basket</h2>
+			<h:form id="basket">
+				<h:outputText value="Your basket contains these products:"/>
+				<h:dataTable id="results" var="row" value="#{basketBackingAction.products}">
+					<h:column>
+						<f:facet name="header">
+							Name
+						</f:facet>
+						#{row.name}
+					</h:column>
+					<h:column>
+						<f:facet name="header">
+							Category
+						</f:facet>
+						#{row.category}
+					</h:column>
+					<h:column>
+						<f:facet name="header">
+							Price
+						</f:facet>
+						#{row.price}
+					</h:column>
+					<h:column>
+						<f:facet name="header">
+							Quantity
+						</f:facet>
+						#{row.quantity}
+					</h:column>
+					<h:column>
+						<f:facet name="header">
+							Action
+						</f:facet>
+					</h:column>
+				</h:dataTable>
+				<h:commandButton value="Order" actionListener="#{basketBackingAction.order}"/>
+				<h:commandButton value="Clear" actionListener="#{basketBackingAction.clear}"/>
+			</h:form>
 		</ui:define>
 	</ui:composition>
 

@@ -2,6 +2,7 @@ package be.groept.repositories.entities;
 
 import java.util.Collection;
 import java.util.LinkedList;
+
 import be.groept.repositories.entities.UserRoleEntity.Role;
 
 /**

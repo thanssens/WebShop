@@ -2,7 +2,8 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:h="http://java.sun.com/jsf/html"
-	xmlns:f="http://java.sun.com/jsf/core">
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
 
 	<ui:composition template="../templates/template.xhtml">
 		<ui:define name="title">
@@ -67,38 +68,41 @@
 					</tr>
 				</table>
 				<hr/>
-				<h:dataTable id="results" var="row" value="#{productsBackingAction.products}">
-					<h:column>
+				<p:dataTable id="results" var="row" value="#{productsBackingAction.products}"
+							paginator="true" paginatorPosition="bottom" rows="10"
+							selectionMode="single"
+							style="width: 50%">
+					<p:column>
 						<f:facet name="header">
 							Name
 						</f:facet>
 						#{row.name}
-					</h:column>
-					<h:column>
+					</p:column>
+					<p:column>
 						<f:facet name="header">
 							Category
 						</f:facet>
 						#{row.category}
-					</h:column>
-					<h:column>
+					</p:column>
+					<p:column>
 						<f:facet name="header">
 							Price
 						</f:facet>
 						#{row.price}
-					</h:column>
-					<h:column>
+					</p:column>
+					<p:column>
 						<f:facet name="header">
 							Stock
 						</f:facet>
 						#{row.stock}
-					</h:column>
-					<h:column>
+					</p:column>
+					<p:column>
 						<f:facet name="header">
 							Action
 						</f:facet>
 						<h:commandButton value="[to basket]" actionListener="#{productsBackingAction.toBasket}" rendered="#{request.isUserInRole('Registered')}"/>
-					</h:column>
-				</h:dataTable>
+					</p:column>
+				</p:dataTable>
 			</h:form>
 		</ui:define>
 	</ui:composition>
