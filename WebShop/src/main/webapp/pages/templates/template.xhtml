@@ -7,7 +7,7 @@
 <!-- Created by Tom Hanssens 2012 -->
 
 	<h:head>
-		<link rel="stylesheet" type="text/css" href="../../layout/layout.css"/>
+		<h:outputStylesheet library="layout" name="layout.css"/>
 		<h1>WebShop</h1>
 		<title>
 			<ui:insert name="title">
@@ -16,10 +16,10 @@
 		</title>
 	</h:head>
 
-	<h:body id="body">
+	<h:body id="body" style="width:50%; height:75%; margin-left:auto; margin-right:auto; text-align:center; border:1px solid black;">
 		<ui:include src="header.xhtml"/>
 		<h:messages id="messages" style="color:red"/>
-		<ui:insert name="body"/>
+		<ui:insert name="content"/>
 		<ui:include src="footer.xhtml"/>
 	</h:body>
 

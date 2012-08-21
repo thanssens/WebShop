@@ -8,25 +8,25 @@
 
 	<h:form id="logon">
 		<h:outputText value="You are NOT logged in."/>
-		<h:commandButton value="Login" action="../public/login.xhtml?faces-redirect=true"/>
+		<h:commandButton value="Login" action="/pages/public/login.xhtml?faces-redirect=true"/>
 	</h:form>
 
 	<h:form id="menu">
 		<ul>
 			<li>
-				<h:commandButton value="Products" action="../public/products.xhtml?faces-redirect=true"/>
+				<h:commandButton value="Products" action="/pages/public/products.xhtml?faces-redirect=true"/>
 			</li>
 			<li>
-				<h:commandButton value="Register" action="../public/register.xhtml?faces-redirect=true"/>
+				<h:commandButton value="Register" action="/pages/public/register.xhtml?faces-redirect=true"/>
 			</li>
 			<li>
-				<h:commandButton value="My Orders" action="../secured/orders.xhtml?faces-redirect=true" rendered="#{request.isUserInRole('Registered')}"/>
+				<h:commandButton value="My Orders" action="/pages/secured/orders.xhtml?faces-redirect=true" rendered="#{request.isUserInRole('Registered')}"/>
 			</li>
 			<li>
-				<h:commandButton value="My Basket" action="../secured/basket.xhtml?faces-redirect=true" rendered="#{request.isUserInRole('Registered')}"/>
+				<h:commandButton value="My Basket" action="/pages/secured/basket.xhtml?faces-redirect=true" rendered="#{request.isUserInRole('Registered')}"/>
 			</li>
 			<li>
-				<h:commandButton value="Statistics" action="../secured/statistics.xhtml?faces-redirect=true" rendered="#{request.isUserInRole('Super')}"/>
+				<h:commandButton value="Statistics" action="/pages/secured/statistics.xhtml?faces-redirect=true" rendered="#{request.isUserInRole('Super')}"/>
 			</li>
 		</ul>
 	</h:form>
