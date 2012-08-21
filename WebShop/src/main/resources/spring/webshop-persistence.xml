@@ -48,9 +48,9 @@
 		<property name="mappingLocations">
 			<list>
 				<value>classpath:be/groept/repositories/entities/SomeEntity.hbm.xml</value>
-				<value>classpath:be/groept/repositories/entities/UserEntity.hbm.xml</value>
-				<value>classpath:be/groept/repositories/entities/UserInfoEntity.hbm.xml</value>
-				<value>classpath:be/groept/repositories/entities/UserRoleEntity.hbm.xml</value>
+				<value>classpath:be/groept/repositories/entities/user/UserEntity.hbm.xml</value>
+				<value>classpath:be/groept/repositories/entities/user/UserInfoEntity.hbm.xml</value>
+				<value>classpath:be/groept/repositories/entities/user/UserRoleEntity.hbm.xml</value>
 				<value>classpath:be/groept/repositories/entities/ProductEntity.hbm.xml</value>
 			</list>	
 		</property>			

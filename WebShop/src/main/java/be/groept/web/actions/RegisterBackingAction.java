@@ -9,8 +9,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 
 import be.groept.facade.UserFacade;
-import be.groept.repositories.entities.UserEntity;
-import be.groept.repositories.entities.UserInfoEntity;
+import be.groept.repositories.entities.user.UserEntity;
+import be.groept.repositories.entities.user.UserInfoEntity;
 
 /**
  * 

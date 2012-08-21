@@ -11,9 +11,8 @@ import org.springframework.transaction.support.DefaultTransactionDefinition;
 import be.groept.repositories.entities.ProductCategoryEntity;
 import be.groept.repositories.entities.ProductEntity;
 import be.groept.repositories.entities.SomeEntity;
-import be.groept.repositories.entities.UserEntity;
-import be.groept.repositories.entities.UserInfoEntity;
-import be.groept.repositories.entities.UserRoleEntity.Role;
+import be.groept.repositories.entities.user.UserEntity;
+import be.groept.repositories.entities.user.UserInfoEntity;
 
 /**
  * 
@@ -52,7 +51,7 @@ public class TestDataSetup {
 		UserEntity userEntity1 = new UserEntity();
 		userEntity1.setUsername("regged");
 		userEntity1.setPassword("regged");
-		userEntity1.addUserRole(Role.Registered);
+		//userEntity1.addUserRole(Role.Registered);
 
 		UserInfoEntity userInfoEntity1 = new UserInfoEntity();
 		userInfoEntity1.setUser(userEntity1);
@@ -65,7 +64,7 @@ public class TestDataSetup {
 		UserEntity userEntity2 = new UserEntity();
 		userEntity2.setUsername("super");
 		userEntity2.setPassword("super");
-		userEntity2.addUserRole(Role.Super);
+		//userEntity2.addUserRole(Role.Super);
 
 		UserInfoEntity userInfoEntity2 = new UserInfoEntity();
 		userInfoEntity2.setUser(userEntity2);
