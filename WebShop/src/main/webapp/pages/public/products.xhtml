@@ -17,7 +17,7 @@
 							<h:outputLabel value="Product Name"/>
 						</td>
 						<td>
-							<h:inputText label="Product Name" value="#{productsBackingAction.productSearchCriteria.name}"/>
+							<h:inputText label="Product Name" value="#{productBackingAction.searchModel.name}"/>
 						</td>
 					</tr>
 					<tr>
@@ -25,7 +25,7 @@
 							<h:outputLabel value="Product Category"/>
 						</td>
 						<td>
-							<h:inputText label="Product Category" value="#{productsBackingAction.productSearchCriteria.category}"/>
+							<h:inputText label="Product Category" value="#{productBackingAction.searchModel.category}"/>
 						</td>
 					</tr>
 					<tr>
@@ -33,13 +33,13 @@
 							<h:outputLabel value="Product Price From"/>
 						</td>
 						<td>
-							<h:inputText label="Product Price From" value="#{productsBackingAction.productSearchCriteria.minPrice}"/>
+							<h:inputText label="Product Price From" value="#{productBackingAction.searchModel.minPrice}"/>
 						</td>
 						<td>
 							<h:outputLabel value="Product Price Till"/>
 						</td>
 						<td>
-							<h:inputText label="Product Price Till" value="#{productsBackingAction.productSearchCriteria.maxPrice}"/>
+							<h:inputText label="Product Price Till" value="#{productBackingAction.searchModel.maxPrice}"/>
 						</td>
 					</tr>
 					<tr>
@@ -47,13 +47,13 @@
 							<h:outputLabel value="Stock From"/>
 						</td>
 						<td>
-							<h:inputText label="Stock From" value="#{productsBackingAction.productSearchCriteria.minStock}"/>
+							<h:inputText label="Stock From" value="#{productBackingAction.searchModel.minStock}"/>
 						</td>
 						<td>
 							<h:outputLabel value="Stock Till"/>
 						</td>
 						<td>
-							<h:inputText label="Stock Till" value="#{productsBackingAction.productSearchCriteria.maxStock}"/>
+							<h:inputText label="Stock Till" value="#{productBackingAction.searchModel.maxStock}"/>
 						</td>
 					</tr>
 					<tr>
@@ -61,13 +61,13 @@
 						<td></td>
 						<td></td>
 						<td>
-							<h:commandButton value="Search" actionListener="#{productsBackingAction.search}"/>
-							<h:commandButton value="Clear" action="#{productsBackingAction.clear}" immediate="true"/>
+							<h:commandButton value="Clear" action="#{productBackingAction.clear}" immediate="true"/>
+							<h:commandButton value="Search" actionListener="#{productBackingAction.search}"/>
 						</td>
 					</tr>
 				</table>
 				<hr/>
-				<h:dataTable var="row" value="#{productsBackingAction.products}">
+				<h:dataTable var="row" value="#{productBackingAction.products}">
 					<h:column>
 						<f:facet name="header">
 							Name
@@ -96,7 +96,7 @@
 						<f:facet name="header">
 							Action
 						</f:facet>
-						<h:commandButton value="[to basket]" actionListener="#{productsBackingAction.toBasket}" rendered="#{request.isUserInRole('Registered')}"/>
+						<h:commandButton value="[to basket]" actionListener="#{productBackingAction.toBasket}" rendered="#{request.isUserInRole('Registered')}"/>
 					</h:column>
 				</h:dataTable>
 			</h:form>

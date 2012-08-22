@@ -8,11 +8,12 @@ import org.springframework.transaction.PlatformTransactionManager;
 import org.springframework.transaction.TransactionStatus;
 import org.springframework.transaction.support.DefaultTransactionDefinition;
 
-import be.groept.repositories.entities.ProductCategoryEntity;
-import be.groept.repositories.entities.ProductEntity;
 import be.groept.repositories.entities.SomeEntity;
+import be.groept.repositories.entities.product.ProductCategoryEntity;
+import be.groept.repositories.entities.product.ProductEntity;
 import be.groept.repositories.entities.user.UserEntity;
 import be.groept.repositories.entities.user.UserInfoEntity;
+import be.groept.repositories.entities.user.UserRoleEntity.Role;
 
 /**
  * 
@@ -39,19 +40,10 @@ public class TestDataSetup {
 		someEntity.setLastName("Doe");
 		someEntity.setBirthDate(new GregorianCalendar(2000, 1, 1).getTime());
 
-		ProductCategoryEntity productCategoryEntity1 = new ProductCategoryEntity();
-		productCategoryEntity1.setName("Household");
-		ProductCategoryEntity productCategoryEntity2 = new ProductCategoryEntity();
-		productCategoryEntity2.setName("Electronics");
-		ProductCategoryEntity productCategoryEntity3 = new ProductCategoryEntity();
-		productCategoryEntity3.setName("Hifi");
-
-
-
 		UserEntity userEntity1 = new UserEntity();
 		userEntity1.setUsername("regged");
 		userEntity1.setPassword("regged");
-		//userEntity1.addUserRole(Role.Registered);
+		userEntity1.addUserRole(Role.Registered);
 
 		UserInfoEntity userInfoEntity1 = new UserInfoEntity();
 		userInfoEntity1.setUser(userEntity1);
@@ -64,7 +56,7 @@ public class TestDataSetup {
 		UserEntity userEntity2 = new UserEntity();
 		userEntity2.setUsername("super");
 		userEntity2.setPassword("super");
-		//userEntity2.addUserRole(Role.Super);
+		userEntity2.addUserRole(Role.Super);
 
 		UserInfoEntity userInfoEntity2 = new UserInfoEntity();
 		userInfoEntity2.setUser(userEntity2);
@@ -74,29 +66,36 @@ public class TestDataSetup {
 		userInfoEntity2.setPhone("0488224466");
 		userInfoEntity2.setEmail("user1@example.com");
 
+		ProductCategoryEntity productCategoryEntity1 = new ProductCategoryEntity();
+		productCategoryEntity1.setName("Household");
+		ProductCategoryEntity productCategoryEntity2 = new ProductCategoryEntity();
+		productCategoryEntity2.setName("Electronics");
+		ProductCategoryEntity productCategoryEntity3 = new ProductCategoryEntity();
+		productCategoryEntity3.setName("Hifi");
+
 		ProductEntity productEntity1 = new ProductEntity();
 		productEntity1.setName("Product1");
-		productEntity1.setCategory("Household");
+		productEntity1.setCategoryName(productCategoryEntity1);
 		productEntity1.setPrice(1000);
-		productEntity1.setStock(50);
 
 		ProductEntity productEntity2 = new ProductEntity();
 		productEntity2.setName("Product2");
-		productEntity2.setCategory("Electronics");
+		productEntity2.setCategoryName(productCategoryEntity2);
 		productEntity2.setPrice(100);
-		productEntity2.setStock(100);
 
 		ProductEntity productEntity3 = new ProductEntity();
 		productEntity3.setName("Product3");
-		productEntity3.setCategory("Hifi");
+		productEntity3.setCategoryName(productCategoryEntity3);
 		productEntity3.setPrice(200);
-		productEntity3.setStock(1000);
 
 		session.save(someEntity);
 		session.save(userEntity1);
 		session.save(userEntity2);
 		session.save(userInfoEntity1);
 		session.save(userInfoEntity2);
+		session.save(productCategoryEntity1);
+		session.save(productCategoryEntity2);
+		session.save(productCategoryEntity3);
 		session.save(productEntity1);
 		session.save(productEntity2);
 		session.save(productEntity3);

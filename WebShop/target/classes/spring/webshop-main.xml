@@ -36,4 +36,8 @@
 		<constructor-arg ref="sessionFactory"/>
 	</bean>
 
+	<bean id="productFacade" class="be.groept.facade.impl.ProductFacadeImpl">
+		<constructor-arg ref="productRepository"/>
+	</bean>
+
 </beans>

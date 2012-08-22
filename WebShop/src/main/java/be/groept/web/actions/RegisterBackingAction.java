@@ -31,7 +31,7 @@ public class RegisterBackingAction {
 
 	private String username;
 	private String password;
-	private int userrole;
+	private Integer userrole;
 
 	public String clear() {
 		firstname = null;
@@ -42,7 +42,7 @@ public class RegisterBackingAction {
 
 		username = null;
 		password = null;
-		userrole = 0;
+		userrole = null;
 
 		return "clear";
 	}
@@ -113,11 +113,11 @@ public class RegisterBackingAction {
 		this.password = password;
 	}
 
-	public int getUserrole() {
+	public Integer getUserrole() {
 		return userrole;
 	}
 
-	public void setUserrole(int userrole) {
+	public void setUserrole(Integer userrole) {
 		this.userrole = userrole;
 	}
 

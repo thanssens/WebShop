@@ -35,7 +35,7 @@
 		</navigation-case>
 
 		<navigation-case>
-			<from-action>#{productsBackingAction.clear}</from-action>
+			<from-action>#{productBackingAction.clear}</from-action>
 			<from-outcome>clear</from-outcome>
 			<to-view-id>/pages/public/products.xhtml</to-view-id>
 		</navigation-case>
