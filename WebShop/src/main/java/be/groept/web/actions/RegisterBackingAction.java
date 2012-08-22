@@ -28,12 +28,12 @@ public class RegisterBackingAction {
 	private UserEntity userEntity = new UserEntity();
 	private UserInfoEntity userInfoEntity = new UserInfoEntity();
 
-	private String userrole;
+	private int userrole;
 
 	public String clear() {
 		userEntity = new UserEntity();
 		userInfoEntity = new UserInfoEntity();
-		userrole = null;
+		userrole = 0;
 
 		return "clear";
 	}
@@ -64,11 +64,11 @@ public class RegisterBackingAction {
 		this.userInfoEntity = userInfoEntity;
 	}
 
-	public String getUserrole() {
+	public int getUserrole() {
 		return userrole;
 	}
 
-	public void setUserrole(String userrole) {
+	public void setUserrole(int userrole) {
 		this.userrole = userrole;
 	}
 

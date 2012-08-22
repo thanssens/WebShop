@@ -7,8 +7,17 @@
 <!-- Created by Tom Hanssens 2012 -->
 
 	<h:form id="logon">
-		<h:outputText value="You are NOT logged in."/>
-		<h:commandButton value="Login" action="/pages/public/login.xhtml?faces-redirect=true"/>
+		<h:panelGroup id="loggedin" rendered="#{loginBackingAction.userEntity.loggedIn}">
+			<h:outputText value="You are logged in as: #{loginBackingAction.userEntity.username} with role: #{loginBackingAction.userEntity.masterRole}."/>
+			<h:outputText value="You have x items in your "/>
+			<h:commandLink value="basket" action="/pages/secured/basket.xhtml?faces-redirect=true"/>
+			<h:commandButton value="Logout" action="#{loginBackingAction.logoff}"/>
+		</h:panelGroup>
+
+		<h:panelGroup id="loggedout" rendered="#{!loginBackingAction.userEntity.loggedIn}">
+			<h:outputText value="You are NOT logged in."/>
+			<h:commandButton value="Login" action="/pages/public/login.xhtml?faces-redirect=true"/>
+		</h:panelGroup>
 	</h:form>
 
 	<h:form id="menu">
