@@ -20,7 +20,7 @@
 							<h:outputLabel value="First Name:"/>
 						</td>
 						<td>
-							<h:inputText label="First Name" value="#{registerBackingAction.userInfoEntity.firstname}" required="true"/>
+							<h:inputText label="First Name" value="#{registerBackingAction.firstname}" required="true"/>
 						</td>
 					</tr>
 					<tr>
@@ -28,7 +28,7 @@
 							<h:outputLabel value="Last Name:"/>
 						</td>
 						<td>
-							<h:inputText label="Last Name" value="#{registerBackingAction.userInfoEntity.lastname}" required="true"/>
+							<h:inputText label="Last Name" value="#{registerBackingAction.lastname}" required="true"/>
 						</td>
 					</tr>
 					<tr>
@@ -36,7 +36,7 @@
 							<h:outputLabel value="Date of Birth:"/>
 						</td>
 						<td>
-							<h:inputText label="Date of Birth" value="#{registerBackingAction.userInfoEntity.birthdate}" required="true"/>
+							<h:inputText label="Date of Birth" value="#{registerBackingAction.birthdate}" required="true"/>
 						</td>
 					</tr>
 				</table>
@@ -49,7 +49,7 @@
 							<h:outputLabel value="Phone:"/>
 						</td>
 						<td>
-							<h:inputText label="Phone" value="#{registerBackingAction.userInfoEntity.phone}" required="true"/>
+							<h:inputText label="Phone" value="#{registerBackingAction.phone}" required="true"/>
 						</td>
 					</tr>
 					<tr>
@@ -57,7 +57,7 @@
 							<h:outputLabel value="Email:"/>
 						</td>
 						<td>
-							<h:inputText label="Email" value="#{registerBackingAction.userInfoEntity.email}" required="true">
+							<h:inputText label="Email" value="#{registerBackingAction.email}" required="true">
 								<f:validator validatorId="emailValidator"/>
 							</h:inputText>
 						</td>
@@ -72,7 +72,7 @@
 							<h:outputLabel value="User Name:"/>
 						</td>
 						<td>
-							<h:inputText label="User Name" value="#{registerBackingAction.userEntity.username}" required="true"/>
+							<h:inputText label="User Name" value="#{registerBackingAction.username}" required="true"/>
 						</td>
 					</tr>
 					<tr>
@@ -80,7 +80,7 @@
 							<h:outputLabel value="Password:"/>
 						</td>
 						<td>
-							<h:inputSecret label="Password" value="#{registerBackingAction.userEntity.password}" required="true"/>
+							<h:inputSecret label="Password" value="#{registerBackingAction.password}" required="true"/>
 						</td>
 					</tr>
 					<tr>
