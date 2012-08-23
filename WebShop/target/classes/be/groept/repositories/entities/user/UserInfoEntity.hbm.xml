@@ -1,0 +1,34 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd" >
+
+<hibernate-mapping default-access="field">
+
+	<class name="be.groept.repositories.entities.user.UserInfoEntity" table="user_info">
+
+		<id name="id" type="long" column="id" access="property">
+	        <generator class="native"/>
+		</id>
+
+		<property name="username" type="string">
+			<column name="user_name"/>
+		</property>
+		<property name="firstname" type="string">
+			<column name="first_name"/>
+		</property>
+		<property name="lastname" type="string">
+			<column name="last_name"/>
+		</property>
+		<property name="birthdate" type="string">
+			<column name="birthdate"/>
+		</property>
+		<property name="phone" type="string">
+			<column name="phone"/>
+		</property>
+		<property name="email" type="string">
+			<column name="email"/>
+		</property>
+
+	</class>
+</hibernate-mapping>

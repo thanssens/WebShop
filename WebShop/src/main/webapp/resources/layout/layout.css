@@ -1,0 +1,58 @@
+#body {
+	width: 50%;
+	height: 75%;
+	margin-left: auto;
+	margin-right: auto;
+	border: 1px solid black;
+}
+
+#logon {
+	text-align: right;
+	margin-bottom: 0;
+	margin-left: auto;
+	margin-right: auto;
+	padding-top: 0.5em;
+	padding-right: 1em;
+	padding-bottom: 1em;
+}
+
+#menu {
+	text-align: center;
+	margin-top: 0;
+	padding-top: 1em;
+	padding-bottom: 0.5em;
+	list-style-type: none;
+	border-width: 1px;
+	border-color: black;
+	border-top-style: solid;
+	border-bottom-style: solid;
+	background-color: #CCFFFF;
+}
+
+#menu ul {
+	margin: auto;
+}
+
+#menu ul li {
+	display: inline;
+}
+
+#footer {
+	text-align: center;
+	font-size: small;
+	margin-top: 2em;
+}
+
+#messages {
+	color: red;
+	font-size: small;
+}
+
+h1, h2 {
+	display: none;
+}
+
+#register {
+	margin-left: 2em;
+	margin-right: 2em;
+}

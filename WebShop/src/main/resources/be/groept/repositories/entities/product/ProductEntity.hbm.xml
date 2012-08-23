@@ -1,0 +1,25 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd" >
+
+<hibernate-mapping default-access="field">
+
+	<class name="be.groept.repositories.entities.product.ProductEntity" table="products">
+
+		<id name="id" type="long" column="id" access="property">
+	        <generator class="native"/>
+		</id>
+
+		<property name="name" type="string">
+			<column name="name"/>
+		</property>
+		<property name="category" type="string">
+			<column name="category"/>
+		</property>
+		<property name="price" type="integer">
+			<column name="price"/>
+		</property>
+
+	</class>
+</hibernate-mapping>
