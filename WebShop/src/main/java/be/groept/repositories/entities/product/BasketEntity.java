@@ -1,5 +1,7 @@
 package be.groept.repositories.entities.product;
 
+import java.util.Map;
+
 /**
  * 
  * @author Tom Hanssens
@@ -9,8 +11,7 @@ public class BasketEntity {
 
 	private Long id;
 
-	private ProductEntity productEntity;
-	private Integer amount;
+	private Map<ProductEntity, Integer> products;
 
 	public Long getId() {
 		return id;
@@ -20,20 +21,12 @@ public class BasketEntity {
 		this.id = id;
 	}
 
-	public ProductEntity getProductEntity() {
-		return productEntity;
+	public Map<ProductEntity, Integer> getProducts() {
+		return products;
 	}
 
-	public void setProductEntity(ProductEntity productEntity) {
-		this.productEntity = productEntity;
-	}
-
-	public Integer getAmount() {
-		return amount;
-	}
-
-	public void setAmount(Integer amount) {
-		this.amount = amount;
+	public void setProducts(Map<ProductEntity, Integer> products) {
+		this.products = products;
 	}
 
 }
