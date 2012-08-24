@@ -2,8 +2,11 @@ package be.groept.facade.impl;
 
 import java.util.List;
 
+import org.springframework.transaction.annotation.Transactional;
+
 import be.groept.facade.UserFacade;
 import be.groept.repositories.UserRepository;
+import be.groept.repositories.entities.user.UserEntity;
 import be.groept.repositories.entities.user.UserInfoEntity;
 import be.groept.repositories.entities.user.UserRoleEntity;
 
@@ -38,21 +41,34 @@ public class UserFacadeImpl implements UserFacade {
 
 		return userRole;
 	}
-/*
+
 	@Transactional
 	@Override
 	public boolean registerUser(String firstname, String lastname, String birthdate, String phone, String email, String username, String password, int userrole) {
-		List<UserEntity> users = userRepository.findUser(username);
-		if (users.isEmpty()) {
-			UserEntity user = userRepository.createUser(username, password, userrole);
-			UserInfoEntity userInfo = userRepository.createUserInfo(username, firstname, lastname, birthdate, phone, email);
-			userRepository.saveUser(user);
-			userRepository.saveUserInfo(userInfo);
+		if (userRepository.searchUser(username).isEmpty()) {
+			UserEntity userEntity = new UserEntity();
+			userEntity.setUsername(username);
+			userEntity.setPassword(password);
+			userEntity.setRoleValue(userrole);
 
-			return true;
+			if (userRepository.searchUserInfo(username).isEmpty()) {
+				UserInfoEntity userInfoEntity = new UserInfoEntity();
+				userInfoEntity.setUser(userEntity);
+				//userInfoEntity.setUsername(username);
+				userInfoEntity.setFirstname(firstname);
+				userInfoEntity.setLastname(lastname);
+				userInfoEntity.setBirthdate(birthdate);
+				userInfoEntity.setPhone(phone);
+				userInfoEntity.setEmail(email);
+
+				userRepository.saveUser(userEntity);
+				userRepository.saveUserInfo(userInfoEntity);
+
+				return true;
+			}
 		}
 
 		return false;
 	}
-*/
+
 }

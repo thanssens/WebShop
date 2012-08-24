@@ -55,11 +55,9 @@ public class UserEntity {
 		switch (roleValue) {
 		case 0:
 			addUserRole(Role.Registered);
-			//setMasterRole("Registered");
 			break;
 		case 1:
 			addUserRole(Role.Super);
-			//setMasterRole("Super");
 			break;
 		default:
 			break;

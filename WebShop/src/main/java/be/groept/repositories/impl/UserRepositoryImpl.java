@@ -34,35 +34,12 @@ public class UserRepositoryImpl extends HibernateTemplate implements UserReposit
 		return find("select ure from UserRoleEntity ure where ure.username = ?", username);
 	}
 
-	@Override
-	public UserEntity createUser(String username, String password, int userrole) {
-		UserEntity userEntity = new UserEntity();
-		userEntity.setUsername(username);
-		userEntity.setPassword(password);
-		userEntity.setRoleValue(userrole);
-
-		return userEntity;
-	}
-
-	@Override
-	public UserInfoEntity createUserInfo(String username, String firstname, String lastname, String birthdate, String phone, String email) {
-		UserInfoEntity userInfoEntity = new UserInfoEntity();
-		userInfoEntity.setUsername(username);
-		userInfoEntity.setFirstname(firstname);
-		userInfoEntity.setLastname(lastname);
-		userInfoEntity.setBirthdate(birthdate);
-		userInfoEntity.setPhone(phone);
-		userInfoEntity.setEmail(email);
-
-		return userInfoEntity;
-	}
-/*
 	@SuppressWarnings("unchecked")
 	@Override
-	public List<UserEntity> findUser(String username) {
+	public List<UserEntity> searchUser(String username) {
 		return (List<UserEntity>) find("select ue from UserEntity ue where ue.username = ?", username);
 	}
-*/
+
 	@Override
 	public void saveUser(UserEntity userEntity) {
 		Session session = getSessionFactory().getCurrentSession();
