@@ -7,17 +7,34 @@
 <!-- Created by Tom Hanssens 2012 -->
 
 	<h:form id="logon">
-		<h:panelGroup id="loggedin" rendered="#{loginBackingAction.loggedIn}">
-			<h:outputText value="You are logged in as: #{loginBackingAction.username} with role: #{loginBackingAction.masterRole}."/>
-			<h:outputText value="You have x items in your "/>
-			<h:commandLink value="basket" action="/pages/secured/basket.xhtml?faces-redirect=true"/>
-			<h:commandButton value="Logout" action="#{loginBackingAction.logoff}"/>
-		</h:panelGroup>
-
-		<h:panelGroup id="loggedout" rendered="#{!loginBackingAction.loggedIn}">
-			<h:outputText value="You are NOT logged in."/>
-			<h:commandButton value="Login" action="/pages/public/login.xhtml?faces-redirect=true"/>
-		</h:panelGroup>
+		<table>
+			<h:panelGroup id="loggedin" rendered="#{loginBackingAction.loggedIn}">
+				<tr>
+					<td>
+						<h:outputText value="You are logged in as: #{loginBackingAction.user} with role: #{loginBackingAction.role}."/>
+					</td>
+					<td>
+						<h:commandButton value="Logout" action="#{loginBackingAction.logoff}"/>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<h:outputText value="You have x items in your "/>
+						<h:commandLink value="basket" action="/pages/secured/basket.xhtml?faces-redirect=true"/>
+					</td>
+				</tr>
+			</h:panelGroup>
+			<h:panelGroup id="loggedout" rendered="#{!loginBackingAction.loggedIn}">
+				<tr>
+					<td>
+						<h:outputText value="You are NOT logged in."/>
+					</td>
+					<td>
+						<h:commandButton value="Login" action="/pages/public/login.xhtml?faces-redirect=true"/>
+					</td>
+				</tr>
+			</h:panelGroup>
+		</table>
 	</h:form>
 
 	<h:form id="menu">

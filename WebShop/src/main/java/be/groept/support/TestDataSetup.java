@@ -11,7 +11,6 @@ import org.springframework.transaction.support.DefaultTransactionDefinition;
 import be.groept.repositories.entities.SomeEntity;
 import be.groept.repositories.entities.product.ProductCategoryEntity;
 import be.groept.repositories.entities.product.ProductEntity;
-import be.groept.repositories.entities.product.StockEntity;
 import be.groept.repositories.entities.user.UserEntity;
 import be.groept.repositories.entities.user.UserInfoEntity;
 import be.groept.repositories.entities.user.UserRoleEntity.Role;
@@ -48,8 +47,8 @@ public class TestDataSetup {
 
 		UserInfoEntity userInfoEntity1 = new UserInfoEntity();
 		userInfoEntity1.setUser(userEntity1);
-		userInfoEntity1.setFirstname("firstname");
-		userInfoEntity1.setLastname("lastname");
+		userInfoEntity1.setFirstname("First1");
+		userInfoEntity1.setLastname("Last1");
 		userInfoEntity1.setBirthdate("08-08-1988");
 		userInfoEntity1.setPhone("0488224466");
 		userInfoEntity1.setEmail("user1@example.com");
@@ -61,11 +60,11 @@ public class TestDataSetup {
 
 		UserInfoEntity userInfoEntity2 = new UserInfoEntity();
 		userInfoEntity2.setUser(userEntity2);
-		userInfoEntity2.setFirstname("firstname");
-		userInfoEntity2.setLastname("lastname");
+		userInfoEntity2.setFirstname("First2");
+		userInfoEntity2.setLastname("Last2");
 		userInfoEntity2.setBirthdate("08-08-1988");
 		userInfoEntity2.setPhone("0488224466");
-		userInfoEntity2.setEmail("user1@example.com");
+		userInfoEntity2.setEmail("user2@example.com");
 
 		ProductCategoryEntity productCategoryEntity1 = new ProductCategoryEntity();
 		productCategoryEntity1.setName("Household");

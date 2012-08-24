@@ -28,8 +28,9 @@ public class LoginBackingAction {
 	private String username;
 	private String password;
 
-	private String masterRole;
 	private boolean loggedIn;
+	private String user;
+	private String role;
 
 	public String logon() {
 		HttpServletRequest request = (HttpServletRequest) FacesContext.getCurrentInstance().getExternalContext().getRequest();
@@ -42,11 +43,14 @@ public class LoginBackingAction {
 			FacesContext.getCurrentInstance().addMessage(null, message);
 
 			loggedIn = false;
+			user = "";
+			role = "";
 			return "error";
 		}
 
-		setMasterRole(userFacade.getUserMasterRole(username));
 		loggedIn = true;
+		user = userFacade.getUserName(username);
+		role = userFacade.getUserRole(username);
 		return "success";
 	}
 
@@ -57,10 +61,14 @@ public class LoginBackingAction {
 			request.logout();
 		} catch (ServletException e) {
 			loggedIn = true;
+			user = userFacade.getUserName(username);
+			role = userFacade.getUserRole(username);
 			return "error";
 		}
 
 		loggedIn = false;
+		user = "";
+		role = "";
 		return "success";
 	}
 
@@ -80,20 +88,28 @@ public class LoginBackingAction {
 		this.password = password;
 	}
 
-	public String getMasterRole() {
-		return masterRole;
-	}
-
-	public void setMasterRole(String masterRole) {
-		this.masterRole = masterRole;
-	}
-
 	public boolean getLoggedIn() {
 		return loggedIn;
 	}
 
 	public void setLoggedIn(boolean loggedIn) {
 		this.loggedIn = loggedIn;
+	}
+
+	public String getUser() {
+		return user;
+	}
+
+	public void setUser(String user) {
+		this.user = user;
+	}
+
+	public String getRole() {
+		return role;
+	}
+
+	public void setRole(String role) {
+		this.role = role;
 	}
 
 }

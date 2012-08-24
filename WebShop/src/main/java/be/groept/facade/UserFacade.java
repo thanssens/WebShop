@@ -7,8 +7,9 @@ package be.groept.facade;
  */
 public interface UserFacade {
 
-	boolean registerUser(String firstname, String lastname, String birthdate, String phone, String email, String username, String password, int userrole);
+	String getUserName(String username);
+	String getUserRole(String username);
 
-	String getUserMasterRole(String username);
+	//boolean registerUser(String firstname, String lastname, String birthdate, String phone, String email, String username, String password, int userrole);
 
 }
