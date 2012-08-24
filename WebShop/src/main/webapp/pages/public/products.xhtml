@@ -70,25 +70,33 @@
 				<h:dataTable var="row" value="#{productBackingAction.products}">
 					<h:column>
 						<f:facet name="header">
-							Name
+							<h:commandLink action="#{productBackingAction.sortByProductName}">
+								Name
+							</h:commandLink>
 						</f:facet>
 						#{row.product.name}
 					</h:column>
 					<h:column>
 						<f:facet name="header">
-							Category
+							<h:commandLink action="#{productBackingAction.sortByProductCategory}">
+								Category
+							</h:commandLink>
 						</f:facet>
 						#{row.product.category}
 					</h:column>
 					<h:column>
 						<f:facet name="header">
-							Price
+							<h:commandLink action="#{productBackingAction.sortByProductPrice}">
+								Price
+							</h:commandLink>
 						</f:facet>
 						#{row.product.price}
 					</h:column>
 					<h:column>
 						<f:facet name="header">
-							Stock
+							<h:commandLink action="#{productBackingAction.sortByProductStock}">
+								Stock
+							</h:commandLink>
 						</f:facet>
 						#{row.stock}
 					</h:column>

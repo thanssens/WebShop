@@ -9,7 +9,6 @@ public class StockEntity {
 
 	private Long id;
 
-	//private Map<ProductEntity, Integer> products;
 	private ProductEntity product;
 	private Integer stock;
 

@@ -11,7 +11,7 @@ public class ProductEntity {
 
 	private String name;
 	private String category;
-	private int price;
+	private Integer price;
 
 	public void setCategoryName(ProductCategoryEntity productCategoryEntity) {
 		category = productCategoryEntity.getName().toString();
@@ -41,11 +41,11 @@ public class ProductEntity {
 		this.category = category;
 	}
 
-	public int getPrice() {
+	public Integer getPrice() {
 		return price;
 	}
 
-	public void setPrice(int price) {
+	public void setPrice(Integer price) {
 		this.price = price;
 	}
 

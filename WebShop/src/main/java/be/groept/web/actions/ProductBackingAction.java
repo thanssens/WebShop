@@ -1,7 +1,9 @@
 package be.groept.web.actions;
 
-import java.util.Collection;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.LinkedList;
+import java.util.List;
 
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
@@ -28,7 +30,9 @@ public class ProductBackingAction {
 
 	private ProductSearchCriteriaModel productSearchCriteriaModel = new ProductSearchCriteriaModel();
 
-	private Collection<StockEntity> products = new LinkedList<StockEntity>();
+	private List<StockEntity> products = new LinkedList<StockEntity>();
+
+	boolean sortAscending = true;
 
 	public String clear() {
 		productFacade.resetSearchCriteria();
@@ -43,23 +47,135 @@ public class ProductBackingAction {
 	}
 
 	public void search() {
-		setProducts(productFacade.getProductsInStock(productSearchCriteriaModel));
+		products = productFacade.getProductsInStock(productSearchCriteriaModel);
 		clear();
 	}
 
 	public void toBasket() {
 		//
 	}
+
+	public String sortByProductName() {
+		if (sortAscending) {
+			Collections.sort(products, new Comparator<StockEntity>() {
+
+				@Override
+				public int compare(StockEntity product1, StockEntity product2) {
+					return product1.getProduct().getName().compareTo(product2.getProduct().getName());
+				}
+
+			});
+
+			sortAscending = false;
+		} else {
+			Collections.sort(products, new Comparator<StockEntity>() {
+
+				@Override
+				public int compare(StockEntity product1, StockEntity product2) {
+					return product2.getProduct().getName().compareTo(product1.getProduct().getName());
+				}
+
+			});
+
+			sortAscending = true;
+		}
+
+		return null;
+	}
+
+	public String sortByProductCategory() {
+		if (sortAscending) {
+			Collections.sort(products, new Comparator<StockEntity>() {
+
+				@Override
+				public int compare(StockEntity product1, StockEntity product2) {
+					return product1.getProduct().getCategory().compareTo(product2.getProduct().getCategory());
+				}
+
+			});
+
+			sortAscending = false;
+		} else {
+			Collections.sort(products, new Comparator<StockEntity>() {
+
+				@Override
+				public int compare(StockEntity product1, StockEntity product2) {
+					return product2.getProduct().getCategory().compareTo(product1.getProduct().getCategory());
+				}
+
+			});
+
+			sortAscending = true;
+		}
+
+		return null;
+	}
+
+	public String sortByProductPrice() {
+		if (sortAscending) {
+			Collections.sort(products, new Comparator<StockEntity>() {
+
+				@Override
+				public int compare(StockEntity product1, StockEntity product2) {
+					return product1.getProduct().getPrice().compareTo(product2.getProduct().getPrice());
+				}
+
+			});
+
+			sortAscending = false;
+		} else {
+			Collections.sort(products, new Comparator<StockEntity>() {
+
+				@Override
+				public int compare(StockEntity product1, StockEntity product2) {
+					return product2.getProduct().getPrice().compareTo(product1.getProduct().getPrice());
+				}
+
+			});
+
+			sortAscending = true;
+		}
+
+		return null;
+	}
+
+	public String sortByProductStock() {
+		if (sortAscending) {
+			Collections.sort(products, new Comparator<StockEntity>() {
+
+				@Override
+				public int compare(StockEntity product1, StockEntity product2) {
+					return product1.getStock().compareTo(product2.getStock());
+				}
+
+			});
+
+			sortAscending = false;
+		} else {
+			Collections.sort(products, new Comparator<StockEntity>() {
+
+				@Override
+				public int compare(StockEntity product1, StockEntity product2) {
+					return product2.getStock().compareTo(product1.getStock());
+				}
+
+			});
+
+			sortAscending = true;
+		}
+
+		return null;
+	}
 /*
-	public void setProducts(Collection<ProductEntity> list) {
+	public void setProducts(List<ProductEntity> list) {
 		this.products = (LinkedList<ProductEntity>) list;
 	}
 */
-	public Collection<StockEntity> getProducts() {
+	public List<StockEntity> getProducts() {
 		return products;
 	}
 
-	public void setProducts(Collection<StockEntity> products) {
+	public void setProducts(List<StockEntity> products) {
 		this.products = products;
 	}
 

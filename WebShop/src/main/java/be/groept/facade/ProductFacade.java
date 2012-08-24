@@ -16,6 +16,8 @@ public interface ProductFacade {
 
 	void resetSearchCriteria();
 
+	//void addProductToBasket();
+
 	//LinkedHashMap<ProductSearchCriteria, Object> buildSearchCriteria(ProductSearchCriteriaModel productSearchCriteriaModel);
 
 }
