@@ -15,9 +15,6 @@
 			<key column="name"/>
 			<one-to-many class="be.groept.repositories.entities.product.ProductEntity"/>
 		</bag>
-		<property name="stock" type="integer">
-			<column name="stock"/>
-		</property>
 
 	</class>
 </hibernate-mapping>
