@@ -11,10 +11,14 @@
 	        <generator class="native"/>
 		</id>
 
-		<bag name="products" table="products">
-			<key column="name"/>
-			<one-to-many class="be.groept.repositories.entities.product.ProductEntity"/>
-		</bag>
+		<component name="product" class="be.groept.repositories.entities.product.ProductEntity">
+			<property name="name"/>
+			<property name="category"/>
+			<property name="price"/>
+		</component>
+		<property name="stock" type="integer">
+			<column name="stock"/>
+		</property>
 
 	</class>
 </hibernate-mapping>

@@ -12,7 +12,6 @@ public class ProductEntity {
 	private String name;
 	private String category;
 	private int price;
-	//private int stock;
 
 	public void setCategoryName(ProductCategoryEntity productCategoryEntity) {
 		category = productCategoryEntity.getName().toString();
@@ -49,13 +48,5 @@ public class ProductEntity {
 	public void setPrice(int price) {
 		this.price = price;
 	}
-/*
-	public int getStock() {
-		return stock;
-	}
 
-	public void setStock(int stock) {
-		this.stock = stock;
-	}
-*/
 }

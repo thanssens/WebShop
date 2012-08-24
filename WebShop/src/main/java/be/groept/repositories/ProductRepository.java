@@ -2,7 +2,7 @@ package be.groept.repositories;
 
 import java.util.List;
 
-import be.groept.repositories.entities.product.ProductEntity;
+import be.groept.repositories.entities.product.StockEntity;
 
 /**
  * 
@@ -11,14 +11,16 @@ import be.groept.repositories.entities.product.ProductEntity;
  */
 public interface ProductRepository {
 
-	List<ProductEntity> searchProducts();
-	List<ProductEntity> searchProductsWithCriteria();
+	List<StockEntity> searchProductsInStock();
+	List<StockEntity> searchProductsInStockWithCriteria();
 
-	void createEmptyCriteria();
-	void setNameCriteria(String name);
-	void setCategoryCriteria(String category);
-	void setPriceCriteria(int price);
-	void setPriceRangeCriteria(int minPrice, int maxPrice);
+	void createNewStockCriteria();
+	void addNameCriteria(String name);
+	void addCategoryCriteria(String category);
+	void addPriceCriteria(int price);
+	void addPriceRangeCriteria(int minPrice, int maxPrice);
+	void addStockCriteria(int stock);
+	void addStockRangeCriteria(int minStock, int maxStock);
 /*
 	public enum ProductSearchCriteria {
 		NAME("name", "="),

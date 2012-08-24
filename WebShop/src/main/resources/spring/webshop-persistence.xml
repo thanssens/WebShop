@@ -53,7 +53,6 @@
 				<value>classpath:be/groept/repositories/entities/user/UserRoleEntity.hbm.xml</value>
 				<value>classpath:be/groept/repositories/entities/product/ProductEntity.hbm.xml</value>
 				<value>classpath:be/groept/repositories/entities/product/ProductCategoryEntity.hbm.xml</value>
-				<value>classpath:be/groept/repositories/entities/product/BasketEntity.hbm.xml</value>
 				<value>classpath:be/groept/repositories/entities/product/StockEntity.hbm.xml</value>
 			</list>	
 		</property>			

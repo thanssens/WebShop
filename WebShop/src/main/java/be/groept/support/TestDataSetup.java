@@ -11,6 +11,7 @@ import org.springframework.transaction.support.DefaultTransactionDefinition;
 import be.groept.repositories.entities.SomeEntity;
 import be.groept.repositories.entities.product.ProductCategoryEntity;
 import be.groept.repositories.entities.product.ProductEntity;
+import be.groept.repositories.entities.product.StockEntity;
 import be.groept.repositories.entities.user.UserEntity;
 import be.groept.repositories.entities.user.UserInfoEntity;
 import be.groept.repositories.entities.user.UserRoleEntity.Role;
@@ -87,19 +88,19 @@ public class TestDataSetup {
 		productEntity3.setName("Product3");
 		productEntity3.setCategoryName(productCategoryEntity3);
 		productEntity3.setPrice(200);
-/*
+
 		StockEntity stockEntity1 = new StockEntity();
-		stockEntity1.setProductEntity(productEntity1);
+		stockEntity1.setProduct(productEntity1);
 		stockEntity1.setStock(50);
 
 		StockEntity stockEntity2 = new StockEntity();
-		stockEntity2.setProductEntity(productEntity2);
+		stockEntity2.setProduct(productEntity2);
 		stockEntity2.setStock(100);
 
 		StockEntity stockEntity3 = new StockEntity();
-		stockEntity3.setProductEntity(productEntity3);
+		stockEntity3.setProduct(productEntity3);
 		stockEntity3.setStock(1000);
-*/
+
 		session.save(someEntity);
 		session.save(userEntity1);
 		session.save(userEntity2);
@@ -111,9 +112,9 @@ public class TestDataSetup {
 		session.save(productEntity1);
 		session.save(productEntity2);
 		session.save(productEntity3);
-		/*session.save(stockEntity1);
+		session.save(stockEntity1);
 		session.save(stockEntity2);
-		session.save(stockEntity3);*/
+		session.save(stockEntity3);
 		platformTransactionManager.commit(transactionStatus);
 	}
 

@@ -8,7 +8,7 @@ import org.hibernate.criterion.Restrictions;
 import org.springframework.orm.hibernate3.HibernateTemplate;
 
 import be.groept.repositories.ProductRepository;
-import be.groept.repositories.entities.product.ProductEntity;
+import be.groept.repositories.entities.product.StockEntity;
 
 /**
  * 
@@ -21,45 +21,55 @@ public class ProductRepositoryImpl extends HibernateTemplate implements ProductR
 
 	public ProductRepositoryImpl(SessionFactory sessionFactory) {
 		super(sessionFactory);
-		createEmptyCriteria();
+		createNewStockCriteria();
 	}
 
 	@Override
-	public void createEmptyCriteria() {
-		criteria = getSessionFactory().openStatelessSession().createCriteria(ProductEntity.class);
+	public void createNewStockCriteria() {
+		criteria = getSessionFactory().openStatelessSession().createCriteria(StockEntity.class);
 	}
 
 	@Override
-	public void setNameCriteria(String name) {
-		criteria.add(Restrictions.like("name", name));
+	public void addNameCriteria(String name) {
+		criteria.add(Restrictions.like("product.name", name));
 	}
 
 	@Override
-	public void setCategoryCriteria(String category) {
-		criteria.add(Restrictions.like("category", category));
+	public void addCategoryCriteria(String category) {
+		criteria.add(Restrictions.like("product.category", category));
 	}
 
 	@Override
-	public void setPriceCriteria(int price) {
-		criteria.add(Restrictions.eq("price", price));
+	public void addPriceCriteria(int price) {
+		criteria.add(Restrictions.eq("product.price", price));
 	}
 
 	@Override
-	public void setPriceRangeCriteria(int minPrice, int maxPrice) {
-		criteria.add(Restrictions.between("price", minPrice, maxPrice));
-	}
-
-	@SuppressWarnings("unchecked")
-	@Override
-	public List<ProductEntity> searchProducts() {
-		String query = "select pe from ProductEntity pe";
-		return (List<ProductEntity>) find(query);
+	public void addPriceRangeCriteria(int minPrice, int maxPrice) {
+		criteria.add(Restrictions.between("product.price", minPrice, maxPrice));
 	}
 
 	@SuppressWarnings("unchecked")
 	@Override
-	public List<ProductEntity> searchProductsWithCriteria() {
-		return (List<ProductEntity>) criteria.list();
+	public List<StockEntity> searchProductsInStock() {
+		String query = "select se from StockEntity se";
+		return (List<StockEntity>) find(query);
+	}
+
+	@SuppressWarnings("unchecked")
+	@Override
+	public List<StockEntity> searchProductsInStockWithCriteria() {
+		return (List<StockEntity>) criteria.list();
+	}
+
+	@Override
+	public void addStockCriteria(int stock) {
+		criteria.add(Restrictions.eq("stock", stock));
+	}
+
+	@Override
+	public void addStockRangeCriteria(int minStock, int maxStock) {
+		criteria.add(Restrictions.between("stock", minStock, maxStock));
 	}
 
 /*
@@ -70,38 +80,6 @@ public class ProductRepositoryImpl extends HibernateTemplate implements ProductR
 		Criteria criteria = getSession().createCriteria(ProductEntity.class);
 		if()
 		return null;
-	}
-
-	@Override
-	public String buildNameQuery(String name) {
-		String query = "";
-		return query;
-	}
-
-	@Override
-	public String buildCategoryQuery(String category) {
-		String query = "";
-		return query;
-	}
-
-	@Override
-	public String buildPriceQuery(int price) {
-		String query = "";
-		return query;
-	}
-
-	@Override
-	public String buildPriceQuery(int minPrice, int maxPrice) {
-		String query = "";
-		return query;
-	}
-
-	public ProductSearchCriteriaModel getProductSearchCriteriaModel() {
-		return productSearchCriteriaModel;
-	}
-
-	public void setProductSearchCriteriaModel(ProductSearchCriteriaModel productSearchCriteriaModel) {
-		this.productSearchCriteriaModel = productSearchCriteriaModel;
 	}
 /*
 	@SuppressWarnings("unchecked")

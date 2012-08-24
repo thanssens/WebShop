@@ -4,7 +4,7 @@ import java.util.List;
 
 import be.groept.facade.ProductFacade;
 import be.groept.repositories.ProductRepository;
-import be.groept.repositories.entities.product.ProductEntity;
+import be.groept.repositories.entities.product.StockEntity;
 import be.groept.web.actions.model.ProductSearchCriteriaModel;
 
 /**
@@ -21,37 +21,38 @@ public class ProductFacadeImpl implements ProductFacade {
 	}
 
 	@Override
-	public List<ProductEntity> getProducts(ProductSearchCriteriaModel productSearchCriteriaModel) {
+	public List<StockEntity> getProductsInStock(ProductSearchCriteriaModel productSearchCriteriaModel) {
 		boolean criteria = false;
 
 		if(!productSearchCriteriaModel.getName().isEmpty()) {
-			productRepository.setNameCriteria(productSearchCriteriaModel.getName());
+			productRepository.addNameCriteria(productSearchCriteriaModel.getName());
 			criteria = true;
 		}
 		if(!productSearchCriteriaModel.getCategory().isEmpty()) {
-			productRepository.setCategoryCriteria(productSearchCriteriaModel.getCategory());
+			productRepository.addCategoryCriteria(productSearchCriteriaModel.getCategory());
 			criteria = true;
 		}
 		if(productSearchCriteriaModel.getMinPrice() != 0) {
 			if(productSearchCriteriaModel.getMaxPrice() != 0) {
-				productRepository.setPriceRangeCriteria(productSearchCriteriaModel.getMinPrice(), productSearchCriteriaModel.getMaxPrice());
+				productRepository.addPriceRangeCriteria(productSearchCriteriaModel.getMinPrice(), productSearchCriteriaModel.getMaxPrice());
 				criteria = true;
 			} else {
-				productRepository.setPriceCriteria(productSearchCriteriaModel.getMinPrice());
+				productRepository.addPriceCriteria(productSearchCriteriaModel.getMinPrice());
 				criteria = true;
 			}
 		}
 
 		if(criteria) {
-			return productRepository.searchProductsWithCriteria();
+			return productRepository.searchProductsInStockWithCriteria();
 		} else {
-			return productRepository.searchProducts();
+			return productRepository.searchProductsInStock();
 		}
 	}
 
 	public void resetSearchCriteria() {
-		productRepository.createEmptyCriteria();
+		productRepository.createNewStockCriteria();
 	}
+
 /*
 	@Override
 	public List<ProductEntity> getProducts(

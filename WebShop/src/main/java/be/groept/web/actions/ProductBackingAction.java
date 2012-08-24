@@ -10,7 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 
 import be.groept.facade.ProductFacade;
-import be.groept.repositories.entities.product.ProductEntity;
+import be.groept.repositories.entities.product.StockEntity;
 import be.groept.web.actions.model.ProductSearchCriteriaModel;
 
 /**
@@ -28,10 +28,9 @@ public class ProductBackingAction {
 
 	private ProductSearchCriteriaModel productSearchCriteriaModel = new ProductSearchCriteriaModel();
 
-	private Collection<ProductEntity> products = new LinkedList<ProductEntity>();
+	private Collection<StockEntity> products = new LinkedList<StockEntity>();
 
 	public String clear() {
-		//productSearchCriteriaModel = new ProductSearchCriteriaModel();
 		productFacade.resetSearchCriteria();
 		productSearchCriteriaModel.setName("");
 		productSearchCriteriaModel.setCategory("");
@@ -44,7 +43,7 @@ public class ProductBackingAction {
 	}
 
 	public void search() {
-		setProducts(productFacade.getProducts(productSearchCriteriaModel));
+		setProducts(productFacade.getProductsInStock(productSearchCriteriaModel));
 		clear();
 	}
 
@@ -56,11 +55,11 @@ public class ProductBackingAction {
 		this.products = (LinkedList<ProductEntity>) list;
 	}
 */
-	public Collection<ProductEntity> getProducts() {
+	public Collection<StockEntity> getProducts() {
 		return products;
 	}
 
-	public void setProducts(Collection<ProductEntity> products) {
+	public void setProducts(Collection<StockEntity> products) {
 		this.products = products;
 	}
 

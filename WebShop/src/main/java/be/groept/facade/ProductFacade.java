@@ -2,7 +2,7 @@ package be.groept.facade;
 
 import java.util.List;
 
-import be.groept.repositories.entities.product.ProductEntity;
+import be.groept.repositories.entities.product.StockEntity;
 import be.groept.web.actions.model.ProductSearchCriteriaModel;
 
 /**
@@ -12,7 +12,7 @@ import be.groept.web.actions.model.ProductSearchCriteriaModel;
  */
 public interface ProductFacade {
 
-	List<ProductEntity> getProducts(ProductSearchCriteriaModel productSearchCriteriaModel);
+	List<StockEntity> getProductsInStock(ProductSearchCriteriaModel productSearchCriteriaModel);
 
 	void resetSearchCriteria();
 
