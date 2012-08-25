@@ -12,7 +12,7 @@ import be.groept.repositories.entities.product.BasketEntity;
 public interface BasketRepository {
 
 	List<BasketEntity> searchProducts(String username);
-	List<BasketEntity> searchProduct(String username, String productname);
+	List<BasketEntity> searchProductByName(String username, String productname);
 
 	void addNewProduct(String username, String productname, String category, int price, int quantity);
 	void updateProductQuantity(String username, String productname, int quantity);

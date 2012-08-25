@@ -13,7 +13,7 @@ public interface BasketFacade {
 
 	List<BasketEntity> getProducts(String username);
 
-	int getProductQuantity(String username, String productname);
+	int getTotalProducts(String username);
 
 	void addProduct(BasketEntity basketEntity);
 	void removeProduct(BasketEntity basketEntity);

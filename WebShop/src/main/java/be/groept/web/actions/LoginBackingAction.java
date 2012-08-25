@@ -40,7 +40,6 @@ public class LoginBackingAction {
 			loggedIn = true;
 			user = userFacade.getUserName(username);
 			role = userFacade.getUserRole(username);
-			//FacesContext.getCurrentInstance().getExternalContext().redirect(((String) request.getSession().getAttribute("from")));
 		} catch (ServletException e) {
 			FacesMessage message = new FacesMessage("The entered username or password is not correct.");
 			message.setSeverity(FacesMessage.SEVERITY_ERROR);

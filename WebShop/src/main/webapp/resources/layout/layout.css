@@ -48,11 +48,25 @@
 	font-size: small;
 }
 
+#register {
+	margin-left: 2em;
+	margin-right: 2em;
+}
+
+#products {
+	margin-left: 2em;
+	margin-right: 2em;
+}
+
+#basket {
+	margin-left: 2em;
+	margin-right: 2em;
+}
+
 h1, h2 {
 	display: none;
 }
 
-#register {
-	margin-left: 2em;
-	margin-right: 2em;
+table {
+	border: 1px solid black;
 }

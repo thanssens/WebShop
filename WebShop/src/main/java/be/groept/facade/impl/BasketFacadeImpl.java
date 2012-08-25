@@ -25,20 +25,31 @@ public class BasketFacadeImpl implements BasketFacade {
 	}
 
 	@Override
-	public int getProductQuantity(String username, String productname) {
-		// TODO Auto-generated method stub
-		return 0;
+	public int getTotalProducts(String username) {
+		int totalProducts = 0;
+
+		for (BasketEntity basketEntity : getProducts(username)) {
+			totalProducts += basketEntity.getQuantity();
+		}
+
+		return totalProducts;
 	}
 
 	@Override
 	public void addProduct(BasketEntity basketEntity) {
 		String username = basketEntity.getUsername();
-		String productName = basketEntity.getProduct().getName();
+		String productname = basketEntity.getProduct().getName();
 		String category = basketEntity.getProduct().getCategory();
 		int price = basketEntity.getProduct().getPrice();
 		int quantity = basketEntity.getQuantity();
 
-		basketRepository.addNewProduct(username, productName, category, price, quantity);
+		List<BasketEntity> results = basketRepository.searchProductByName(username, productname);
+		if (results.isEmpty()) {
+			basketRepository.addNewProduct(username, productname, category, price, quantity);
+		} else {
+			//quantity++;
+			basketRepository.updateProductQuantity(username, productname, quantity);
+		}
 	}
 
 	@Override

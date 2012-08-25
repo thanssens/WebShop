@@ -28,10 +28,10 @@ public class BasketRepositoryImpl extends HibernateTemplate implements BasketRep
 		return (List<BasketEntity>) find("select be from BasketEntity be where be.username = ?", username);
 	}
 
+	@SuppressWarnings("unchecked")
 	@Override
-	public List<BasketEntity> searchProduct(String username, String productname) {
-		// TODO Auto-generated method stub
-		return null;
+	public List<BasketEntity> searchProductByName(String username, String productname) {
+		return (List<BasketEntity>) find("select be from BasketEntity be where be.username = ? and be.product.name = ?", username, productname);
 	}
 
 	@Override

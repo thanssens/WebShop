@@ -19,7 +19,9 @@
 				</tr>
 				<tr>
 					<td>
-						<h:outputText value="You have x items in your "/>
+						<h:outputText value="You have "/>
+						<h:outputText value="#{basketBackingAction.totalProducts}"/>
+						<h:outputText value=" items in your "/>
 						<h:commandLink value="basket" action="/pages/secured/basket.xhtml?faces-redirect=true"/>
 					</td>
 				</tr>

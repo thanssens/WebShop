@@ -31,15 +31,47 @@ public class BasketBackingAction {
 
 	private List<BasketEntity> products = new LinkedList<BasketEntity>();
 
+	private int totalProducts;
+
 	boolean sortAscending = true;
 
-	public String clear() {
+	public void clear() {
 		//remove all products for this user
-		return "";
 	}
 
 	public void order() {
-		//
+		//create new order from products
+	}
+
+	public String getUsername() {
+		String username = "";
+
+		try {
+			HttpServletRequest httpServletRequest = (HttpServletRequest) FacesContext.getCurrentInstance().getExternalContext().getRequest();
+			username = httpServletRequest.getUserPrincipal().getName();
+		} catch (Exception e) {
+			//
+		}
+
+		return username;
+	}
+
+	public List<BasketEntity> getProducts() {
+		setProducts(basketFacade.getProducts(getUsername()));
+		return products;
+	}
+
+	public void setProducts(List<BasketEntity> products) {
+		this.products = products;
+	}
+
+	public int getTotalProducts() {
+		setTotalProducts(basketFacade.getTotalProducts(getUsername()));
+		return totalProducts;
+	}
+
+	public void setTotalProducts(int totalProducts) {
+		this.totalProducts = totalProducts;
 	}
 
 	public String sortByName() {
@@ -152,23 +184,6 @@ public class BasketBackingAction {
 		}
 
 		return null;
-	}
-
-	public List<BasketEntity> getProducts() {
-		String username = "";
-		try {
-			HttpServletRequest httpServletRequest = (HttpServletRequest) FacesContext.getCurrentInstance().getExternalContext().getRequest();
-			username = httpServletRequest.getUserPrincipal().getName();
-			products = basketFacade.getProducts(username);
-		} catch (Exception e) {
-			products = new LinkedList<BasketEntity>();
-		}
-
-		return products;
-	}
-
-	public void setProducts(List<BasketEntity> products) {
-		this.products = products;
 	}
 
 }
