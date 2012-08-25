@@ -15,6 +15,7 @@ import org.springframework.stereotype.Controller;
 
 import be.groept.facade.BasketFacade;
 import be.groept.repositories.entities.product.BasketEntity;
+import be.groept.repositories.entities.product.OrderEntity;
 
 /**
  * 
@@ -40,7 +41,8 @@ public class BasketBackingAction {
 	}
 
 	public void order() {
-		//create new order from products
+		OrderEntity orderEntity = new OrderEntity();
+		orderEntity.setProducts(products);
 	}
 
 	public String getUsername() {

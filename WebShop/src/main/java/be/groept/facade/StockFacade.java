@@ -20,8 +20,4 @@ public interface StockFacade {
 
 	int getProductStock(String productname);
 
-/*
-	void increaseStock(StockEntity stockEntity, int stock);
-	void decreaseStock(StockEntity stockEntity, int stock);
-*/
 }

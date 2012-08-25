@@ -15,7 +15,7 @@
 			<column name="username"/>
 		</property>
 		<bag name="products" table="products" cascade="all">
-			<key column="id"/>
+			<key column="name"/>
 			<one-to-many class="be.groept.repositories.entities.product.ProductEntity"/>
 		</bag>
 

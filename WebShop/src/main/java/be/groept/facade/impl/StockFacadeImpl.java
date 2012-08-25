@@ -91,23 +91,5 @@ public class StockFacadeImpl implements StockFacade {
 
 		return 0;
 	}
-/*
-	@Override
-	public void increaseStock(StockEntity stockEntity, int stock) {
-		String productName = stockEntity.getProduct().getName();
-		int newStock = stockEntity.getStock() + stock;
 
-		stockEntity.setStock(newStock);
-		stockRepository.updateProductStock(productName, newStock);
-	}
-
-	@Override
-	public void decreaseStock(StockEntity stockEntity, int stock) {
-		String productName = stockEntity.getProduct().getName();
-		int newStock = stockEntity.getStock() - stock;
-
-		stockEntity.setStock(newStock);
-		stockRepository.updateProductStock(productName, newStock);
-	}
-*/
 }

@@ -30,7 +30,7 @@ public class URLFilter implements Filter {
 
 		if (httpreq.getUserPrincipal() == null) {
 		    httpreq.getSession().setAttribute("from", httpreq.getRequestURI());
-		    httpres.sendRedirect("login.jsf");
+		    httpres.sendRedirect("login.xhtml");
 		} else {
 		    chain.doFilter(request, response);
 		}
