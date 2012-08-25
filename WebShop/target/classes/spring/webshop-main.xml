@@ -48,4 +48,12 @@
 		<constructor-arg ref="basketRepository"/>
 	</bean>
 
+	<bean id="orderRepository" class="be.groept.repositories.impl.OrderRepositoryImpl">
+		<constructor-arg ref="sessionFactory"/>
+	</bean>
+
+	<bean id="orderFacade" class="be.groept.facade.impl.OrderFacadeImpl">
+		<constructor-arg ref="orderRepository"/>
+	</bean>
+
 </beans>

@@ -11,6 +11,9 @@
 	        <generator class="native"/>
 		</id>
 
+		<property name="username" type="string">
+			<column name="username"/>
+		</property>
 		<bag name="products" table="products" cascade="all">
 			<key column="id"/>
 			<one-to-many class="be.groept.repositories.entities.product.ProductEntity"/>

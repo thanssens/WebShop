@@ -12,7 +12,31 @@
 			<h2>My Orders</h2>
 			<h:form id="orders">
 				<h:outputText value="Order history:"/>
-				<h:dataTable>
+				<h:dataTable var="row" value="#{orderBackingAction.orders}">
+					<h:column>
+						<f:facet name="header">
+							Order Number
+						</f:facet>
+						#{row.orders.id}
+					</h:column>
+					<h:column>
+						<f:facet name="header">
+							Order Date
+						</f:facet>
+						#{row.date}
+					</h:column>
+					<h:column>
+						<f:facet name="header">
+							# Products
+						</f:facet>
+						#{row.orders.size}
+					</h:column>
+					<h:column>
+						<f:facet name="header">
+							Total Order Amount
+						</f:facet>
+						#{row.totalPrice}
+					</h:column>
 				</h:dataTable>
 			</h:form>
 		</ui:define>

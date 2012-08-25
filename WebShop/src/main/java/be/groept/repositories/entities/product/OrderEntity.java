@@ -11,6 +11,8 @@ public class OrderEntity {
 
 	private Long id;
 
+	private String username;
+
 	private Collection<BasketEntity> products;
 
 	public Long getId() {
@@ -19,6 +21,14 @@ public class OrderEntity {
 
 	public void setId(Long id) {
 		this.id = id;
+	}
+
+	public String getUsername() {
+		return username;
+	}
+
+	public void setUsername(String username) {
+		this.username = username;
 	}
 
 	public Collection<BasketEntity> getProducts() {
