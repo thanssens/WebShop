@@ -13,4 +13,6 @@ public interface BasketFacade {
 
 	List<BasketEntity> getProducts();
 
+	void addProduct(BasketEntity basketEntity);
+	void removeProduct(BasketEntity basketEntity);
 }

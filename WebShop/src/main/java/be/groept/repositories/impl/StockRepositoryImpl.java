@@ -44,7 +44,7 @@ public class StockRepositoryImpl extends HibernateTemplate implements StockRepos
 		Session session = getSessionFactory().openSession();
 		Transaction transaction = session.beginTransaction();
 
-		String query = "update StockEntity se set se.stock = :stock where se.product.name = :name";
+		String query = "update StockEntity se set se.stock = :stock where se.product.name = :name and se.stock >= 0";
 		@SuppressWarnings("unused")
 		int updatedProducts = session.createQuery(query)
 				.setInteger("stock", stock)
