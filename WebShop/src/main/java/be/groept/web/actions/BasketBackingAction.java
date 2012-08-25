@@ -66,7 +66,7 @@ public class BasketBackingAction {
 	}
 
 	public int getTotalProducts() {
-		setTotalProducts(basketFacade.getTotalProducts(getUsername()));
+		setTotalProducts(basketFacade.getTotalQuantity(getUsername()));
 		return totalProducts;
 	}
 

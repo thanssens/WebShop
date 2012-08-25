@@ -25,7 +25,19 @@ public class BasketFacadeImpl implements BasketFacade {
 	}
 
 	@Override
-	public int getTotalProducts(String username) {
+	public int getProductQuantity(String username, String productname) {
+		List<BasketEntity> results = basketRepository.searchProductByName(username, productname);
+
+		if (results.isEmpty()) {
+			return 0;
+		} else {
+			BasketEntity basketEntity = results.get(0);
+			return basketEntity.getQuantity();
+		}
+	}
+
+	@Override
+	public int getTotalQuantity(String username) {
 		int totalProducts = 0;
 
 		for (BasketEntity basketEntity : getProducts(username)) {
@@ -47,7 +59,7 @@ public class BasketFacadeImpl implements BasketFacade {
 		if (results.isEmpty()) {
 			basketRepository.addNewProduct(username, productname, category, price, quantity);
 		} else {
-			//quantity++;
+			quantity += getProductQuantity(username, productname);
 			basketRepository.updateProductQuantity(username, productname, quantity);
 		}
 	}
