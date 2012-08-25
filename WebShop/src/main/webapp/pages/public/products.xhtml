@@ -33,13 +33,16 @@
 							<h:outputLabel value="Product Price From"/>
 						</td>
 						<td>
-							<h:inputText label="Product Price From" value="#{stockBackingAction.productSearchCriteriaModel.minPrice}"/>
+							<h:inputText label="Product Price From" binding="#{price}" value="#{stockBackingAction.productSearchCriteriaModel.minPrice}"/>
 						</td>
 						<td>
 							<h:outputLabel value="Product Price Till"/>
 						</td>
 						<td>
-							<h:inputText label="Product Price Till" value="#{stockBackingAction.productSearchCriteriaModel.maxPrice}"/>
+							<h:inputText label="Product Price Till" value="#{stockBackingAction.productSearchCriteriaModel.maxPrice}">
+								<f:validator validatorId="priceRangeValidator"/>
+								<f:attribute name="price" value="#{price}"/>
+							</h:inputText>
 						</td>
 					</tr>
 					<tr>
@@ -47,13 +50,16 @@
 							<h:outputLabel value="Stock From"/>
 						</td>
 						<td>
-							<h:inputText label="Stock From" value="#{stockBackingAction.productSearchCriteriaModel.minStock}"/>
+							<h:inputText label="Stock From" binding="#{stock}" value="#{stockBackingAction.productSearchCriteriaModel.minStock}"/>
 						</td>
 						<td>
 							<h:outputLabel value="Stock Till"/>
 						</td>
 						<td>
-							<h:inputText label="Stock Till" value="#{stockBackingAction.productSearchCriteriaModel.maxStock}"/>
+							<h:inputText label="Stock Till" value="#{stockBackingAction.productSearchCriteriaModel.maxStock}">
+								<f:validator validatorId="stockRangeValidator"/>
+								<f:attribute name="stock" value="#{stock}"/>
+							</h:inputText>
 						</td>
 					</tr>
 					<tr>

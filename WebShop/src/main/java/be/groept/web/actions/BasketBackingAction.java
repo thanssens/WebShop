@@ -50,7 +50,7 @@ public class BasketBackingAction {
 			HttpServletRequest httpServletRequest = (HttpServletRequest) FacesContext.getCurrentInstance().getExternalContext().getRequest();
 			username = httpServletRequest.getUserPrincipal().getName();
 		} catch (Exception e) {
-			//
+			e.printStackTrace();
 		}
 
 		return username;

@@ -21,6 +21,16 @@
 		<validator-class>be.groept.web.validators.EmailValidator</validator-class>
 	</validator>
 
+	<validator>
+		<validator-id>priceRangeValidator</validator-id>
+		<validator-class>be.groept.web.validators.PriceRangeValidator</validator-class>
+	</validator>
+
+	<validator>
+		<validator-id>stockRangeValidator</validator-id>
+		<validator-class>be.groept.web.validators.StockRangeValidator</validator-class>
+	</validator>
+
 	<navigation-rule>
 		<navigation-case>
 			<from-action>#{registerBackingAction.clear}</from-action>
