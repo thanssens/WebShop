@@ -2,8 +2,8 @@ package be.groept.facade.impl;
 
 import java.util.List;
 
-import be.groept.facade.ProductFacade;
-import be.groept.repositories.ProductRepository;
+import be.groept.facade.StockFacade;
+import be.groept.repositories.StockRepository;
 import be.groept.repositories.entities.product.StockEntity;
 import be.groept.web.actions.model.ProductSearchCriteriaModel;
 
@@ -12,45 +12,45 @@ import be.groept.web.actions.model.ProductSearchCriteriaModel;
  * @author Tom Hanssens
  *
  */
-public class ProductFacadeImpl implements ProductFacade {
+public class StockFacadeImpl implements StockFacade {
 
-	private final ProductRepository productRepository;
+	private final StockRepository stockRepository;
 
-	public ProductFacadeImpl(ProductRepository productRepository) {
-		this.productRepository = productRepository;
+	public StockFacadeImpl(StockRepository stockRepository) {
+		this.stockRepository = stockRepository;
 	}
 
 	@Override
-	public List<StockEntity> getProductsInStock(ProductSearchCriteriaModel productSearchCriteriaModel) {
+	public List<StockEntity> getProducts(ProductSearchCriteriaModel productSearchCriteriaModel) {
 		boolean criteria = false;
 
 		if(!productSearchCriteriaModel.getName().isEmpty()) {
-			productRepository.addNameCriteria(productSearchCriteriaModel.getName());
+			stockRepository.addNameCriteria(productSearchCriteriaModel.getName());
 			criteria = true;
 		}
 		if(!productSearchCriteriaModel.getCategory().isEmpty()) {
-			productRepository.addCategoryCriteria(productSearchCriteriaModel.getCategory());
+			stockRepository.addCategoryCriteria(productSearchCriteriaModel.getCategory());
 			criteria = true;
 		}
 		if(productSearchCriteriaModel.getMinPrice() != 0) {
 			if(productSearchCriteriaModel.getMaxPrice() != 0) {
-				productRepository.addPriceRangeCriteria(productSearchCriteriaModel.getMinPrice(), productSearchCriteriaModel.getMaxPrice());
+				stockRepository.addPriceRangeCriteria(productSearchCriteriaModel.getMinPrice(), productSearchCriteriaModel.getMaxPrice());
 				criteria = true;
 			} else {
-				productRepository.addPriceCriteria(productSearchCriteriaModel.getMinPrice());
+				stockRepository.addPriceCriteria(productSearchCriteriaModel.getMinPrice());
 				criteria = true;
 			}
 		}
 
 		if(criteria) {
-			return productRepository.searchProductsInStockWithCriteria();
+			return stockRepository.searchProductsWithCriteria();
 		} else {
-			return productRepository.searchProductsInStock();
+			return stockRepository.searchProducts();
 		}
 	}
 
 	public void resetSearchCriteria() {
-		productRepository.createNewStockCriteria();
+		stockRepository.initCriteria();
 	}
 
 /*

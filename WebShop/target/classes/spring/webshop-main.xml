@@ -32,12 +32,20 @@
 		<constructor-arg ref="userRepository"/>
 	</bean>
 
-	<bean id="productRepository" class="be.groept.repositories.impl.ProductRepositoryImpl">
+	<bean id="stockRepository" class="be.groept.repositories.impl.StockRepositoryImpl">
 		<constructor-arg ref="sessionFactory"/>
 	</bean>
 
-	<bean id="productFacade" class="be.groept.facade.impl.ProductFacadeImpl">
-		<constructor-arg ref="productRepository"/>
+	<bean id="stockFacade" class="be.groept.facade.impl.StockFacadeImpl">
+		<constructor-arg ref="stockRepository"/>
+	</bean>
+
+	<bean id="basketRepository" class="be.groept.repositories.impl.BasketRepositoryImpl">
+		<constructor-arg ref="sessionFactory"/>
+	</bean>
+
+	<bean id="basketFacade" class="be.groept.facade.impl.BasketFacadeImpl">
+		<constructor-arg ref="basketRepository"/>
 	</bean>
 
 </beans>

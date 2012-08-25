@@ -12,7 +12,39 @@
 			<h2>My Basket</h2>
 			<h:form id="basket">
 				<h:outputText value="Your basket contains these products:"/>
-				<h:dataTable>
+				<h:dataTable var="row" value="#{basketBackingAction.products}">
+					<h:column>
+						<f:facet name="header">
+							<h:commandLink action="#{basketBackingAction.sortByName}">
+								Name
+							</h:commandLink>
+						</f:facet>
+						#{row.product.name}
+					</h:column>
+					<h:column>
+						<f:facet name="header">
+							<h:commandLink action="#{basketBackingAction.sortByCategory}">
+								Category
+							</h:commandLink>
+						</f:facet>
+						#{row.product.category}
+					</h:column>
+					<h:column>
+						<f:facet name="header">
+							<h:commandLink action="#{basketBackingAction.sortByPrice}">
+								Price
+							</h:commandLink>
+						</f:facet>
+						#{row.product.price}
+					</h:column>
+					<h:column>
+						<f:facet name="header">
+							<h:commandLink action="#{basketBackingAction.sortByQuantity}">
+								Quantity
+							</h:commandLink>
+						</f:facet>
+						#{row.quantity}
+					</h:column>
 				</h:dataTable>
 				<h:commandButton value="Clear"/>
 				<h:commandButton value="Order"/>

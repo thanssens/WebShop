@@ -10,9 +10,9 @@ import be.groept.web.actions.model.ProductSearchCriteriaModel;
  * @author Tom Hanssens
  *
  */
-public interface ProductFacade {
+public interface StockFacade {
 
-	List<StockEntity> getProductsInStock(ProductSearchCriteriaModel productSearchCriteriaModel);
+	List<StockEntity> getProducts(ProductSearchCriteriaModel productSearchCriteriaModel);
 
 	void resetSearchCriteria();
 

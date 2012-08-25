@@ -11,7 +11,7 @@ import javax.faces.bean.SessionScoped;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 
-import be.groept.facade.ProductFacade;
+import be.groept.facade.StockFacade;
 import be.groept.repositories.entities.product.StockEntity;
 import be.groept.web.actions.model.ProductSearchCriteriaModel;
 
@@ -20,22 +20,22 @@ import be.groept.web.actions.model.ProductSearchCriteriaModel;
  * @author Tom Hanssens
  *
  */
-@ManagedBean(name = "productBackingAction")
+@ManagedBean(name = "stockBackingAction")
 @SessionScoped
 @Controller
-public class ProductBackingAction {
+public class StockBackingAction {
 
 	@Autowired
-	private ProductFacade productFacade;
-
-	private ProductSearchCriteriaModel productSearchCriteriaModel = new ProductSearchCriteriaModel();
+	private StockFacade stockFacade;
 
 	private List<StockEntity> products = new LinkedList<StockEntity>();
+
+	private ProductSearchCriteriaModel productSearchCriteriaModel = new ProductSearchCriteriaModel();
 
 	boolean sortAscending = true;
 
 	public String clear() {
-		productFacade.resetSearchCriteria();
+		stockFacade.resetSearchCriteria();
 		productSearchCriteriaModel.setName("");
 		productSearchCriteriaModel.setCategory("");
 		productSearchCriteriaModel.setMinPrice(null);
@@ -47,15 +47,15 @@ public class ProductBackingAction {
 	}
 
 	public void search() {
-		products = productFacade.getProductsInStock(productSearchCriteriaModel);
+		products = stockFacade.getProducts(productSearchCriteriaModel);
 		clear();
 	}
 
-	public void toBasket() {
+	public void addToBasket() {
 		//
 	}
 
-	public String sortByProductName() {
+	public String sortByName() {
 		if (sortAscending) {
 			Collections.sort(products, new Comparator<StockEntity>() {
 
@@ -83,7 +83,7 @@ public class ProductBackingAction {
 		return null;
 	}
 
-	public String sortByProductCategory() {
+	public String sortByCategory() {
 		if (sortAscending) {
 			Collections.sort(products, new Comparator<StockEntity>() {
 
@@ -111,7 +111,7 @@ public class ProductBackingAction {
 		return null;
 	}
 
-	public String sortByProductPrice() {
+	public String sortByPrice() {
 		if (sortAscending) {
 			Collections.sort(products, new Comparator<StockEntity>() {
 
@@ -139,7 +139,7 @@ public class ProductBackingAction {
 		return null;
 	}
 
-	public String sortByProductStock() {
+	public String sortByStock() {
 		if (sortAscending) {
 			Collections.sort(products, new Comparator<StockEntity>() {
 

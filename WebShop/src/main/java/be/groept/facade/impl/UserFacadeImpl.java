@@ -54,7 +54,6 @@ public class UserFacadeImpl implements UserFacade {
 			if (userRepository.searchUserInfo(username).isEmpty()) {
 				UserInfoEntity userInfoEntity = new UserInfoEntity();
 				userInfoEntity.setUser(userEntity);
-				//userInfoEntity.setUsername(username);
 				userInfoEntity.setFirstname(firstname);
 				userInfoEntity.setLastname(lastname);
 				userInfoEntity.setBirthdate(birthdate);

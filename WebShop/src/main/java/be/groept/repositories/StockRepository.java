@@ -9,12 +9,12 @@ import be.groept.repositories.entities.product.StockEntity;
  * @author Tom Hanssens
  * 
  */
-public interface ProductRepository {
+public interface StockRepository {
 
-	List<StockEntity> searchProductsInStock();
-	List<StockEntity> searchProductsInStockWithCriteria();
+	List<StockEntity> searchProducts();
+	List<StockEntity> searchProductsWithCriteria();
 
-	void createNewStockCriteria();
+	void initCriteria();
 	void addNameCriteria(String name);
 	void addCategoryCriteria(String category);
 	void addPriceCriteria(int price);

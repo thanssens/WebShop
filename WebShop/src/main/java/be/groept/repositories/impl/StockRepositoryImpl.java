@@ -7,7 +7,7 @@ import org.hibernate.SessionFactory;
 import org.hibernate.criterion.Restrictions;
 import org.springframework.orm.hibernate3.HibernateTemplate;
 
-import be.groept.repositories.ProductRepository;
+import be.groept.repositories.StockRepository;
 import be.groept.repositories.entities.product.StockEntity;
 
 /**
@@ -15,17 +15,17 @@ import be.groept.repositories.entities.product.StockEntity;
  * @author Tom Hanssens
  *
  */
-public class ProductRepositoryImpl extends HibernateTemplate implements ProductRepository {
+public class StockRepositoryImpl extends HibernateTemplate implements StockRepository {
 
 	private Criteria criteria;
 
-	public ProductRepositoryImpl(SessionFactory sessionFactory) {
+	public StockRepositoryImpl(SessionFactory sessionFactory) {
 		super(sessionFactory);
-		createNewStockCriteria();
+		initCriteria();
 	}
 
 	@Override
-	public void createNewStockCriteria() {
+	public void initCriteria() {
 		criteria = getSessionFactory().openStatelessSession().createCriteria(StockEntity.class);
 	}
 
@@ -49,19 +49,6 @@ public class ProductRepositoryImpl extends HibernateTemplate implements ProductR
 		criteria.add(Restrictions.between("product.price", minPrice, maxPrice));
 	}
 
-	@SuppressWarnings("unchecked")
-	@Override
-	public List<StockEntity> searchProductsInStock() {
-		String query = "select se from StockEntity se";
-		return (List<StockEntity>) find(query);
-	}
-
-	@SuppressWarnings("unchecked")
-	@Override
-	public List<StockEntity> searchProductsInStockWithCriteria() {
-		return (List<StockEntity>) criteria.list();
-	}
-
 	@Override
 	public void addStockCriteria(int stock) {
 		criteria.add(Restrictions.eq("stock", stock));
@@ -70,6 +57,19 @@ public class ProductRepositoryImpl extends HibernateTemplate implements ProductR
 	@Override
 	public void addStockRangeCriteria(int minStock, int maxStock) {
 		criteria.add(Restrictions.between("stock", minStock, maxStock));
+	}
+
+	@SuppressWarnings("unchecked")
+	@Override
+	public List<StockEntity> searchProducts() {
+		String query = "select se from StockEntity se";
+		return (List<StockEntity>) find(query);
+	}
+
+	@SuppressWarnings("unchecked")
+	@Override
+	public List<StockEntity> searchProductsWithCriteria() {
+		return (List<StockEntity>) criteria.list();
 	}
 
 /*
