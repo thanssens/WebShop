@@ -26,7 +26,6 @@ public class BasketFacadeImpl implements BasketFacade {
 	public List<BasketEntity> getProducts() {
 		HttpServletRequest httpServletRequest = (HttpServletRequest) FacesContext.getCurrentInstance().getExternalContext().getRequest();
 		String username = httpServletRequest.getUserPrincipal().getName();
-System.out.println(username);
 		return basketRepository.searchProducts(username);
 	}
 

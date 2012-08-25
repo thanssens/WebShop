@@ -152,6 +152,7 @@ public class BasketBackingAction {
 	}
 
 	public List<BasketEntity> getProducts() {
+		products = basketFacade.getProducts();
 		return products;
 	}
 
