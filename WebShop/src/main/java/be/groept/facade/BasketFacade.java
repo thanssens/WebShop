@@ -11,8 +11,11 @@ import be.groept.repositories.entities.product.BasketEntity;
  */
 public interface BasketFacade {
 
-	List<BasketEntity> getProducts();
+	List<BasketEntity> getProducts(String username);
+
+	int getProductQuantity(String username, String productname);
 
 	void addProduct(BasketEntity basketEntity);
 	void removeProduct(BasketEntity basketEntity);
+
 }

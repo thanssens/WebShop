@@ -29,11 +29,17 @@ public class BasketRepositoryImpl extends HibernateTemplate implements BasketRep
 	}
 
 	@Override
-	public void addNewProduct(String username, String productName, String category, int price, int quantity) {
+	public List<BasketEntity> searchProduct(String username, String productname) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public void addNewProduct(String username, String productname, String category, int price, int quantity) {
 		Session session = getSessionFactory().openSession();
 		Transaction transaction = session.beginTransaction();
 
-		String query = "INSERT INTO baskets (username, name, category, price, quantity) VALUES ('" + username + "','" + productName + "','" + category + "',"  + price + "," + quantity + ")";
+		String query = "INSERT INTO baskets (username, name, category, price, quantity) VALUES ('" + username + "','" + productname + "','" + category + "',"  + price + "," + quantity + ")";
 		SQLQuery sqlQuery = session.createSQLQuery(query);
 		sqlQuery.executeUpdate();
 

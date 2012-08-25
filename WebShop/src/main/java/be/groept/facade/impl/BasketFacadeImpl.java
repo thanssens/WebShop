@@ -2,9 +2,6 @@ package be.groept.facade.impl;
 
 import java.util.List;
 
-import javax.faces.context.FacesContext;
-import javax.servlet.http.HttpServletRequest;
-
 import be.groept.facade.BasketFacade;
 import be.groept.repositories.BasketRepository;
 import be.groept.repositories.entities.product.BasketEntity;
@@ -23,10 +20,14 @@ public class BasketFacadeImpl implements BasketFacade {
 	}
 
 	@Override
-	public List<BasketEntity> getProducts() {
-		HttpServletRequest httpServletRequest = (HttpServletRequest) FacesContext.getCurrentInstance().getExternalContext().getRequest();
-		String username = httpServletRequest.getUserPrincipal().getName();
+	public List<BasketEntity> getProducts(String username) {
 		return basketRepository.searchProducts(username);
+	}
+
+	@Override
+	public int getProductQuantity(String username, String productname) {
+		// TODO Auto-generated method stub
+		return 0;
 	}
 
 	@Override

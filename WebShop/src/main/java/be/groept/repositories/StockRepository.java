@@ -14,7 +14,7 @@ public interface StockRepository {
 	List<StockEntity> searchProducts();
 	List<StockEntity> searchProductsWithCriteria();
 
-	void updateProductStock(String productName, int stock);
+	void updateProductStock(String productname, int stock);
 
 	void initCriteria();
 	void addNameCriteria(String name);

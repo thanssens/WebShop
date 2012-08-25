@@ -7,6 +7,8 @@ import java.util.List;
 
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
+import javax.faces.context.FacesContext;
+import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -31,8 +33,9 @@ public class BasketBackingAction {
 
 	boolean sortAscending = true;
 
-	public void clear() {
-		//
+	public String clear() {
+		//remove all products for this user
+		return "";
 	}
 
 	public void order() {
@@ -152,7 +155,15 @@ public class BasketBackingAction {
 	}
 
 	public List<BasketEntity> getProducts() {
-		products = basketFacade.getProducts();
+		String username = "";
+		try {
+			HttpServletRequest httpServletRequest = (HttpServletRequest) FacesContext.getCurrentInstance().getExternalContext().getRequest();
+			username = httpServletRequest.getUserPrincipal().getName();
+			products = basketFacade.getProducts(username);
+		} catch (Exception e) {
+			products = new LinkedList<BasketEntity>();
+		}
+
 		return products;
 	}
 

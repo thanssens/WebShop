@@ -40,7 +40,7 @@ public class StockRepositoryImpl extends HibernateTemplate implements StockRepos
 	}
 
 	@Override
-	public void updateProductStock(String productName, int stock) {
+	public void updateProductStock(String productname, int stock) {
 		Session session = getSessionFactory().openSession();
 		Transaction transaction = session.beginTransaction();
 
@@ -48,7 +48,7 @@ public class StockRepositoryImpl extends HibernateTemplate implements StockRepos
 		@SuppressWarnings("unused")
 		int updatedProducts = session.createQuery(query)
 				.setInteger("stock", stock)
-				.setString("name", productName)
+				.setString("name", productname)
 				.executeUpdate();
 
 		transaction.commit();

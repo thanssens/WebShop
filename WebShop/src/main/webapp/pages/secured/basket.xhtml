@@ -46,8 +46,8 @@
 						#{row.quantity}
 					</h:column>
 				</h:dataTable>
-				<h:commandButton value="Clear"/>
-				<h:commandButton value="Order"/>
+				<h:commandButton value="Clear" action="#{basketBackingAction.clear}"/>
+				<h:commandButton value="Order" actionListener="#{basketBackingAction.order}"/>
 			</h:form>
 		</ui:define>
 	</ui:composition>
