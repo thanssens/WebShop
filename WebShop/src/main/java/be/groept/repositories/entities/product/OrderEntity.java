@@ -1,8 +1,6 @@
-package be.groept.repositories.entities;
+package be.groept.repositories.entities.product;
 
 import java.util.Collection;
-
-import be.groept.repositories.entities.product.ProductEntity;
 
 /**
  * 
@@ -13,7 +11,7 @@ public class OrderEntity {
 
 	private Long id;
 
-	private Collection<ProductEntity> products;
+	private Collection<BasketEntity> products;
 
 	public Long getId() {
 		return id;
@@ -23,11 +21,11 @@ public class OrderEntity {
 		this.id = id;
 	}
 
-	public Collection<ProductEntity> getProducts() {
+	public Collection<BasketEntity> getProducts() {
 		return products;
 	}
 
-	public void setProducts(Collection<ProductEntity> products) {
+	public void setProducts(Collection<BasketEntity> products) {
 		this.products = products;
 	}
 

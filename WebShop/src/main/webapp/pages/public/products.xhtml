@@ -73,7 +73,7 @@
 					</tr>
 				</table>
 				<hr/>
-				<h:dataTable var="row" value="#{stockBackingAction.products}" binding="#{productBackingAction.selectedProduct}">
+				<h:dataTable var="row" value="#{stockBackingAction.products}" binding="#{productBackingAction.selectedProduct}"  style="border: 1px solid black">
 					<h:column>
 						<f:facet name="header">
 							<h:commandLink action="#{stockBackingAction.sortByName}">

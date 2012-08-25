@@ -66,8 +66,9 @@ public class BasketFacadeImpl implements BasketFacade {
 
 	@Override
 	public void removeProduct(BasketEntity basketEntity) {
-		// TODO Auto-generated method stub
-		
+		String username = basketEntity.getUsername();
+		String productname = basketEntity.getProduct().getName();
+		basketRepository.removeProduct(username, productname);
 	}
 
 }

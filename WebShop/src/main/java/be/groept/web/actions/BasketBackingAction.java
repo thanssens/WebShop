@@ -36,7 +36,9 @@ public class BasketBackingAction {
 	boolean sortAscending = true;
 
 	public void clear() {
-		//remove all products for this user
+		for (BasketEntity basketEntity : basketFacade.getProducts(getUsername())) {
+			basketFacade.removeProduct(basketEntity);
+		}
 	}
 
 	public void order() {
