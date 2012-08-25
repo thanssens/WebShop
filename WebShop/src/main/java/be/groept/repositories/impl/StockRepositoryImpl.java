@@ -29,8 +29,7 @@ public class StockRepositoryImpl extends HibernateTemplate implements StockRepos
 	@SuppressWarnings("unchecked")
 	@Override
 	public List<StockEntity> searchProducts() {
-		String query = "select se from StockEntity se";
-		return (List<StockEntity>) find(query);
+		return (List<StockEntity>) find("select se from StockEntity se");
 	}
 
 	@SuppressWarnings("unchecked")
@@ -89,32 +88,5 @@ public class StockRepositoryImpl extends HibernateTemplate implements StockRepos
 	public void addStockRangeCriteria(int minStock, int maxStock) {
 		criteria.add(Restrictions.between("stock", minStock, maxStock));
 	}
-/*
-	@SuppressWarnings("unchecked")
-	@Override
-	public List<ProductEntity> searchProducts(LinkedHashMap<ProductSearchCriteria, Object> criteria) {
-		String query = "select pe from ProductEntity pe";
-System.out.print(criteria.toString());
-		if(criteria.isEmpty()) {
-			return (List<ProductEntity>) find(query);
-		}
 
-		boolean firstElement = true;
-		String parameters = "";
-		for (ProductSearchCriteria criterium : criteria.keySet()) {
-			if(firstElement) {
-				query += " where " + criterium.getQueryString("pe");
-				parameters += "," + criteria.get(criterium);
-				firstElement = false;
-			} else {
-				query += " and " + criterium.getQueryString("pe");
-				parameters += "," + criteria.get(criterium);
-			}
-		}
-		query += parameters;
-
-		return (List<ProductEntity>) find(query);
-		//return (List<ProductEntity>) find(query, criteria.values());
-	}
-*/
 }

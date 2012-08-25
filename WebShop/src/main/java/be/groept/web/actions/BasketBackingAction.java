@@ -36,9 +36,7 @@ public class BasketBackingAction {
 	boolean sortAscending = true;
 
 	public void clear() {
-		for (BasketEntity basketEntity : basketFacade.getProducts(getUsername())) {
-			basketFacade.removeProduct(basketEntity);
-		}
+		//
 	}
 
 	public void order() {
@@ -46,21 +44,17 @@ public class BasketBackingAction {
 	}
 
 	public String getUsername() {
-		String username = "";
-
-		try {
-			HttpServletRequest httpServletRequest = (HttpServletRequest) FacesContext.getCurrentInstance().getExternalContext().getRequest();
-			username = httpServletRequest.getUserPrincipal().getName();
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-
-		return username;
+		HttpServletRequest httpServletRequest = (HttpServletRequest) FacesContext.getCurrentInstance().getExternalContext().getRequest();
+		return httpServletRequest.getUserPrincipal().getName();
 	}
 
 	public List<BasketEntity> getProducts() {
-		setProducts(basketFacade.getProducts(getUsername()));
-		return products;
+		try {
+			setProducts(basketFacade.getProducts(getUsername()));
+			return products;
+		} catch (Exception e) {
+			return new LinkedList<BasketEntity>();
+		}
 	}
 
 	public void setProducts(List<BasketEntity> products) {

@@ -13,10 +13,15 @@ import be.groept.web.actions.model.ProductSearchCriteriaModel;
 public interface StockFacade {
 
 	List<StockEntity> getProducts(ProductSearchCriteriaModel productSearchCriteriaModel);
+	List<StockEntity> getProduct(String productname);
 
+	void updateStock(String productname, int stock);
 	void resetSearchCriteria();
 
+	int getProductStock(String productname);
+
+/*
 	void increaseStock(StockEntity stockEntity, int stock);
 	void decreaseStock(StockEntity stockEntity, int stock);
-
+*/
 }

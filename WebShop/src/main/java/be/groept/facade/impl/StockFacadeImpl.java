@@ -24,15 +24,15 @@ public class StockFacadeImpl implements StockFacade {
 	public List<StockEntity> getProducts(ProductSearchCriteriaModel productSearchCriteriaModel) {
 		boolean criteria = false;
 
-		if(!productSearchCriteriaModel.getName().isEmpty()) {
+		if (!productSearchCriteriaModel.getName().isEmpty()) {
 			stockRepository.addNameCriteria(productSearchCriteriaModel.getName());
 			criteria = true;
 		}
-		if(!productSearchCriteriaModel.getCategory().isEmpty()) {
+		if (!productSearchCriteriaModel.getCategory().isEmpty()) {
 			stockRepository.addCategoryCriteria(productSearchCriteriaModel.getCategory());
 			criteria = true;
 		}
-		if(productSearchCriteriaModel.getMinPrice() != 0) {
+		if (productSearchCriteriaModel.getMinPrice() != 0) {
 			if(productSearchCriteriaModel.getMaxPrice() != 0) {
 				stockRepository.addPriceRangeCriteria(productSearchCriteriaModel.getMinPrice(), productSearchCriteriaModel.getMaxPrice());
 				criteria = true;
@@ -41,11 +41,37 @@ public class StockFacadeImpl implements StockFacade {
 				criteria = true;
 			}
 		}
+		if (productSearchCriteriaModel.getMinStock() != 0) {
+			if(productSearchCriteriaModel.getMaxStock() != 0) {
+				stockRepository.addPriceRangeCriteria(productSearchCriteriaModel.getMinStock(), productSearchCriteriaModel.getMaxStock());
+				criteria = true;
+			} else {
+				stockRepository.addPriceCriteria(productSearchCriteriaModel.getMinStock());
+				criteria = true;
+			}
+		}
 
-		if(criteria) {
+		if (criteria) {
 			return stockRepository.searchProductsWithCriteria();
 		} else {
 			return stockRepository.searchProducts();
+		}
+	}
+
+	@Override
+	public List<StockEntity> getProduct(String productname) {
+		stockRepository.addNameCriteria(productname);
+		return stockRepository.searchProductsWithCriteria();
+	}
+
+	@SuppressWarnings("unused")
+	@Override
+	public void updateStock(String productname, int stock) {
+		resetSearchCriteria();
+		stockRepository.addNameCriteria(productname);
+		List<StockEntity> results = stockRepository.searchProductsWithCriteria();
+		for (StockEntity stockEntity : results) {
+			stockRepository.updateProductStock(productname, stock);
 		}
 	}
 
@@ -54,6 +80,18 @@ public class StockFacadeImpl implements StockFacade {
 		stockRepository.initCriteria();
 	}
 
+	@Override
+	public int getProductStock(String productname) {
+		stockRepository.addNameCriteria(productname);
+		List<StockEntity> results = stockRepository.searchProductsWithCriteria();
+
+		if (!results.isEmpty()) {
+			return results.get(0).getStock();
+		}
+
+		return 0;
+	}
+/*
 	@Override
 	public void increaseStock(StockEntity stockEntity, int stock) {
 		String productName = stockEntity.getProduct().getName();
@@ -70,49 +108,6 @@ public class StockFacadeImpl implements StockFacade {
 
 		stockEntity.setStock(newStock);
 		stockRepository.updateProductStock(productName, newStock);
-	}
-
-/*
-	@Override
-	public List<ProductEntity> getProducts(
-			ProductSearchCriteriaModel productSearchCriteriaModel) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public LinkedHashMap<ProductSearchCriteria, Object> buildSearchCriteria(ProductSearchCriteriaModel productSearchCriteriaModel) {
-		LinkedHashMap<ProductSearchCriteria, Object> criteria = new LinkedHashMap<ProductSearchCriteria, Object>();
-
-		if(productSearchCriteriaModel.getName() != null || productSearchCriteriaModel.getName().isEmpty() || productSearchCriteriaModel.getName().length() != 0) {
-			criteria.put(ProductSearchCriteria.NAME, productSearchCriteriaModel.getName());
-		}
-		if(productSearchCriteriaModel.getCategory() != null || productSearchCriteriaModel.getCategory().isEmpty()) {
-			criteria.put(ProductSearchCriteria.CATEGORY, productSearchCriteriaModel.getCategory());
-		}
-		if(productSearchCriteriaModel.getMinPrice() != null || productSearchCriteriaModel.getMinPrice() != 0) {
-			if(productSearchCriteriaModel.getMaxPrice() != null || productSearchCriteriaModel.getMaxPrice() != 0) {
-				criteria.put(ProductSearchCriteria.MIN_PRICE, productSearchCriteriaModel.getMinPrice());
-				criteria.put(ProductSearchCriteria.MAX_PRICE, productSearchCriteriaModel.getMaxPrice());
-			} else {
-				criteria.put(ProductSearchCriteria.EQL_PRICE, productSearchCriteriaModel.getMinPrice());
-			}
-		}/*
-		if(productSearchCriteriaModel.getMinStock() != null) {
-			if(productSearchCriteriaModel.getMaxStock() != null) {
-				criteria.put(ProductSearchCriteria.MIN_STOCK, productSearchCriteriaModel.getMinStock());
-				criteria.put(ProductSearchCriteria.MAX_STOCK, productSearchCriteriaModel.getMaxStock());
-			} else {
-				criteria.put(ProductSearchCriteria.EQL_STOCK, productSearchCriteriaModel.getMinStock());
-			}
-		}
-
-		return criteria;
-	}
-
-	@Override
-	public List<ProductEntity> getProducts(ProductSearchCriteriaModel productSearchCriteriaModel) {
-		return productRepository.searchProducts(buildSearchCriteria(productSearchCriteriaModel));
 	}
 */
 }

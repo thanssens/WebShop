@@ -1,5 +1,7 @@
 package be.groept.web.actions;
 
+import java.util.List;
+
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import javax.faces.component.html.HtmlDataTable;
@@ -33,27 +35,48 @@ public class ProductBackingAction {
 
 	private HtmlDataTable selectedProduct;
 
-	public void addToBasket(ActionEvent ae) {
-		HttpServletRequest httpServletRequest = (HttpServletRequest) FacesContext.getCurrentInstance().getExternalContext().getRequest();
-		String username = httpServletRequest.getUserPrincipal().getName();
-
-		StockEntity stockEntity = (StockEntity) selectedProduct.getRowData();
-		stockFacade.decreaseStock(stockEntity, 1);
-
-		BasketEntity basketEntity = new BasketEntity();
-		basketEntity.setUsername(username);
-		basketEntity.setProduct(stockEntity.getProduct());
-		basketEntity.setQuantity(1);
-
-		basketFacade.addProduct(basketEntity);
-	}
-
 	public HtmlDataTable getSelectedProduct() {
 		return selectedProduct;
 	}
 
 	public void setSelectedProduct(HtmlDataTable selectedProduct) {
 		this.selectedProduct = selectedProduct;
+	}
+
+	public String getUsername() {
+		HttpServletRequest httpServletRequest = (HttpServletRequest) FacesContext.getCurrentInstance().getExternalContext().getRequest();
+		return httpServletRequest.getUserPrincipal().getName();
+	}
+
+	public void addToBasket(ActionEvent ae) {
+		StockEntity stockEntity = (StockEntity) selectedProduct.getRowData();
+		String productname = stockEntity.getProduct().getName();
+		int stock = stockEntity.getStock() - 1;
+
+		stockEntity.setStock(stock);
+		stockFacade.updateStock(productname, stock);
+
+		BasketEntity basketEntity = new BasketEntity();
+		basketEntity.setUsername(getUsername());
+		basketEntity.setProduct(stockEntity.getProduct());
+		basketEntity.setQuantity(1);
+
+		basketFacade.addProduct(basketEntity);
+	}
+
+	public void removeFromBasket() {
+		for (BasketEntity basketEntity : basketFacade.getProducts(getUsername())) {
+			basketFacade.removeProduct(basketEntity);
+
+			String productname = basketEntity.getProduct().getName();
+			List<StockEntity> results = stockFacade.getProduct(productname);
+
+			for (StockEntity stockEntity : results) {
+				int stock = stockFacade.getProductStock(productname) + basketEntity.getQuantity();
+				stockEntity.setStock(stock);
+				stockFacade.updateStock(productname, stock);
+			}
+		}
 	}
 
 }
