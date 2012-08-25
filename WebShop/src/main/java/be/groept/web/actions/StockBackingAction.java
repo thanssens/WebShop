@@ -51,10 +51,6 @@ public class StockBackingAction {
 		clear();
 	}
 
-	public void addToBasket() {
-		//
-	}
-
 	public String sortByName() {
 		if (sortAscending) {
 			Collections.sort(products, new Comparator<StockEntity>() {

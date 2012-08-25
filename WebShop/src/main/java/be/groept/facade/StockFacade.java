@@ -16,8 +16,7 @@ public interface StockFacade {
 
 	void resetSearchCriteria();
 
-	//void addProductToBasket();
-
-	//LinkedHashMap<ProductSearchCriteria, Object> buildSearchCriteria(ProductSearchCriteriaModel productSearchCriteriaModel);
+	void increaseStock(StockEntity stockEntity, int stock);
+	void decreaseStock(StockEntity stockEntity, int stock);
 
 }

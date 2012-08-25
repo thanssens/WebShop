@@ -49,8 +49,27 @@ public class StockFacadeImpl implements StockFacade {
 		}
 	}
 
+	@Override
 	public void resetSearchCriteria() {
 		stockRepository.initCriteria();
+	}
+
+	@Override
+	public void increaseStock(StockEntity stockEntity, int stock) {
+		String productName = stockEntity.getProduct().getName();
+		int newStock = stockEntity.getStock() + stock;
+
+		stockEntity.setStock(newStock);
+		stockRepository.updateProductStock(productName, newStock);
+	}
+
+	@Override
+	public void decreaseStock(StockEntity stockEntity, int stock) {
+		String productName = stockEntity.getProduct().getName();
+		int newStock = stockEntity.getStock() - stock;
+
+		stockEntity.setStock(newStock);
+		stockRepository.updateProductStock(productName, newStock);
 	}
 
 /*

@@ -67,7 +67,7 @@
 					</tr>
 				</table>
 				<hr/>
-				<h:dataTable var="row" value="#{stockBackingAction.products}">
+				<h:dataTable var="row" value="#{stockBackingAction.products}" binding="#{productBackingAction.selectedProduct}" style="boder: 1px solid black">
 					<h:column>
 						<f:facet name="header">
 							<h:commandLink action="#{stockBackingAction.sortByName}">
@@ -104,7 +104,7 @@
 						<f:facet name="header">
 							Action
 						</f:facet>
-						<h:commandButton value="[to basket]" actionListener="#{stockBackingAction.addToBasket}" rendered="#{request.isUserInRole('Registered')}"/>
+						<h:commandButton value="[to basket]" actionListener="#{productBackingAction.addToBasket}" rendered="#{request.isUserInRole('Registered')}"/>
 					</h:column>
 				</h:dataTable>
 			</h:form>

@@ -3,7 +3,9 @@ package be.groept.repositories.impl;
 import java.util.List;
 
 import org.hibernate.Criteria;
+import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import org.hibernate.Transaction;
 import org.hibernate.criterion.Restrictions;
 import org.springframework.orm.hibernate3.HibernateTemplate;
 
@@ -22,6 +24,35 @@ public class StockRepositoryImpl extends HibernateTemplate implements StockRepos
 	public StockRepositoryImpl(SessionFactory sessionFactory) {
 		super(sessionFactory);
 		initCriteria();
+	}
+
+	@SuppressWarnings("unchecked")
+	@Override
+	public List<StockEntity> searchProducts() {
+		String query = "select se from StockEntity se";
+		return (List<StockEntity>) find(query);
+	}
+
+	@SuppressWarnings("unchecked")
+	@Override
+	public List<StockEntity> searchProductsWithCriteria() {
+		return (List<StockEntity>) criteria.list();
+	}
+
+	@Override
+	public void updateProductStock(String productName, int stock) {
+		Session session = getSessionFactory().openSession();
+		Transaction transaction = session.beginTransaction();
+
+		String query = "update StockEntity se set se.stock = :stock where se.product.name = :name";
+		@SuppressWarnings("unused")
+		int updatedProducts = session.createQuery(query)
+				.setInteger("stock", stock)
+				.setString("name", productName)
+				.executeUpdate();
+
+		transaction.commit();
+		session.close();
 	}
 
 	@Override
@@ -58,29 +89,6 @@ public class StockRepositoryImpl extends HibernateTemplate implements StockRepos
 	public void addStockRangeCriteria(int minStock, int maxStock) {
 		criteria.add(Restrictions.between("stock", minStock, maxStock));
 	}
-
-	@SuppressWarnings("unchecked")
-	@Override
-	public List<StockEntity> searchProducts() {
-		String query = "select se from StockEntity se";
-		return (List<StockEntity>) find(query);
-	}
-
-	@SuppressWarnings("unchecked")
-	@Override
-	public List<StockEntity> searchProductsWithCriteria() {
-		return (List<StockEntity>) criteria.list();
-	}
-
-/*
-	private ProductSearchCriteriaModel productSearchCriteriaModel;
-
-	@Override
-	public List<ProductEntity> searchProducts(ProductSearchCriteriaModel productSearchCriteriaModel) {
-		Criteria criteria = getSession().createCriteria(ProductEntity.class);
-		if()
-		return null;
-	}
 /*
 	@SuppressWarnings("unchecked")
 	@Override
@@ -107,25 +115,6 @@ System.out.print(criteria.toString());
 
 		return (List<ProductEntity>) find(query);
 		//return (List<ProductEntity>) find(query, criteria.values());
-	}
-
-//	@SuppressWarnings("unchecked")
-//	@Override
-//	public List<ProductEntity> searchProducts(ProductSearchCriteria productSearchCriteria) {
-//		String query = "select pe from ProductEntity pe";
-//		return (List<ProductEntity>) find(query);
-//		/*return (List<ProductEntity>) find("select pe from ProductEntity pe where pe.name = ? and pe.category = ? " +
-//				"and pe.price >= ? and pe.price =< ? " +
-//				"and pe.stock >= ? and pe.stock =< ?",
-//				productSearchCriteria.getName(), productSearchCriteria.getCategory(),
-//				productSearchCriteria.getMinPrice(), productSearchCriteria.getMaxPrice(),
-//				productSearchCriteria.getMinStock(), productSearchCriteria.getMaxStock());*/
-//	}
-/*
-	@Override
-	public List<ProductEntity> searchProductsFromUser(UserEntity userEntity) {
-		// TODO Auto-generated method stub
-		return null;
 	}
 */
 }
