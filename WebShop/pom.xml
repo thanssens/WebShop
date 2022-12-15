@@ -9,7 +9,7 @@
 
 	<properties>
 		<downloadSources>true</downloadSources>
-		<spring.version>3.0.5.RELEASE</spring.version>
+		<spring.version>5.2.20.RELEASE</spring.version>
 		<base.dir>/</base.dir>
 	</properties>
 
